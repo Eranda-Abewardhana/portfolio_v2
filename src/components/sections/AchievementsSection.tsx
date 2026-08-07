@@ -111,9 +111,18 @@ export default function AchievementsSection() {
                 )}
 
                 {/* Award Badge Overlay */}
-                <div className="absolute top-4 left-4 z-30 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400 text-black text-xs font-mono font-black shadow-2xl border border-amber-200" style={{ color: '#000000' }}>
-                  <Trophy className="w-4 h-4 text-black fill-black" />
-                  <span className="font-black" style={{ color: '#000000' }}>CS Eminence &apos;24 Award Winner</span>
+                <div
+                  className="absolute top-4 left-4 z-30 flex items-center gap-2 px-4 py-2 rounded-full font-mono text-xs shadow-2xl border border-amber-300"
+                  style={{
+                    backgroundColor: '#f59e0b',
+                    color: '#000000',
+                    boxShadow: '0 8px 20px rgba(245, 158, 11, 0.4)',
+                  }}
+                >
+                  <Trophy className="w-4 h-4" style={{ color: '#000000', fill: '#000000' }} />
+                  <span style={{ color: '#000000', fontWeight: 900, letterSpacing: '0.02em' }}>
+                    CS Eminence &apos;24 Award Winner
+                  </span>
                 </div>
               </div>
 
