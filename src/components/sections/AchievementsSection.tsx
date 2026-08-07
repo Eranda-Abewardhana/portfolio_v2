@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Award, Star, Users, Sparkles, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ACHIEVEMENTS } from '@/data/portfolioData';
 
@@ -58,17 +58,24 @@ export default function AchievementsSection() {
             transition={{ duration: 0.6 }}
             className="mb-16 glass-card rounded-3xl border border-amber-500/40 shadow-2xl shadow-amber-500/10 overflow-hidden"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[460px]">
 
-              {/* Photo Showcase (Left 5 Cols on desktop) */}
-              <div className="lg:col-span-5 relative min-h-[380px] lg:min-h-[460px] bg-black flex items-center justify-center group/award">
-                <img
-                  src={featuredAchievement.images[activeImageIndex]}
-                  alt={featuredAchievement.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover/award:scale-105"
-                  style={{ objectPosition: 'center center' }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#07090e] via-transparent to-transparent opacity-80" />
+              {/* Photo Showcase (Left 5 Cols on desktop) — Fixed absolute frame preventing any layout shift */}
+              <div className="lg:col-span-5 relative min-h-[380px] lg:min-h-[460px] h-full bg-black overflow-hidden group/award">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={activeImageIndex}
+                    src={featuredAchievement.images[activeImageIndex]}
+                    alt={featuredAchievement.title}
+                    initial={{ opacity: 0, scale: 1.03 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.97 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover/award:scale-105"
+                    style={{ objectPosition: 'center center' }}
+                  />
+                </AnimatePresence>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07090e] via-transparent to-transparent opacity-80 pointer-events-none z-10" />
 
                 {/* Photo Switcher Arrows if >1 image */}
                 {featuredAchievement.images.length > 1 && (
@@ -104,9 +111,9 @@ export default function AchievementsSection() {
                 )}
 
                 {/* Award Badge Overlay */}
-                <div className="absolute top-4 left-4 z-20 flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500 text-black text-xs font-mono font-extrabold shadow-lg">
-                  <Trophy className="w-4 h-4 fill-black" />
-                  <span>CS Eminence &apos;24 Award Winner</span>
+                <div className="absolute top-4 left-4 z-30 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400 text-black text-xs font-mono font-black shadow-2xl border border-amber-200" style={{ color: '#000000' }}>
+                  <Trophy className="w-4 h-4 text-black fill-black" />
+                  <span className="font-black" style={{ color: '#000000' }}>CS Eminence &apos;24 Award Winner</span>
                 </div>
               </div>
 

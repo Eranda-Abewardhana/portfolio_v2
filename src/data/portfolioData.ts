@@ -53,9 +53,10 @@ export const PERSONAL_INFO = {
   shortName: "Eranda Sathsara",
   title: "AI Engineer | ML Engineer | Full-Stack Developer",
   summary: "Final-year Artificial Intelligence undergraduate at the University of Moratuwa with 2+ years of industry experience in Multi-Agent AI systems, RAG pipelines, FastAPI backends, and cloud-native deployments.",
-  location: "Colombo, Sri Lanka",
+  location: "Panadura, Sri Lanka",
   email: "erandasathsara@gmail.com",
-  phone: "+94 764 874 820",
+  phone: "+94 704 006 522",
+  whatsapp: "https://wa.me/94704006522",
   github: "https://github.com/Eranda-Abewardhana",
   linkedin: "https://linkedin.com/in/eranda-abewardhana-6a71bb199",
   images: {
@@ -63,6 +64,11 @@ export const PERSONAL_INFO = {
     aboutTree: "/images/eranda_tree.png",
     aboutSuitThinking: "/images/eranda_suit_thinking.png",
     youfiraExmo: "/images/youfira_exmo2023.png",
+    heroCarousel: [
+      "/images/eranda_tuxedo.png",
+      "/images/eranda_suit_walking.png",
+      "/images/eranda_suit_thinking.png"
+    ],
   },
   stats: [
     { label: "Years Experience", value: "2+" },
@@ -140,7 +146,7 @@ export const EXPERIENCES: Experience[] = [
   {
     role: "Mobile Application Developer",
     company: "eVision Microsystems Pvt Ltd",
-    location: "Colombo, Sri Lanka",
+    location: "Panadura, Sri Lanka",
     period: "Jan 2021 – Mar 2022",
     description: [
       "Developed and shipped 3+ cross-platform mobile applications using Flutter and Native Android (Java) for commercial clients, consistently meeting delivery deadlines.",
@@ -171,7 +177,7 @@ export const PROJECTS: Project[] = [
     gradient: "from-amber-500 via-orange-600 to-yellow-600",
     iconName: "Bot",
     image: "/images/1699017629827.jpg", // Robotic arm vehicle photo!
-    videoSrc: "/images/1698638341487.mp4", // Native MP4 video!
+    videoSrc: "/videos/1698638341487.mp4", // Native MP4 video!
     galleryImages: [
       "/images/1699017629827.jpg",
       "/images/youfira_exmo2023.png",
@@ -196,7 +202,7 @@ export const PROJECTS: Project[] = [
     featured: true,
     gradient: "from-cyan-500 via-blue-600 to-indigo-600",
     iconName: "Scale",
-    videoSrc: "/images/1750325263163.mp4", // Native MP4 video!
+    videoSrc: "/videos/1750325263163.mp4", // Native MP4 video!
     linkedInEmbedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7341395341058969600"
   },
   {

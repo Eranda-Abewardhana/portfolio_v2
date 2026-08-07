@@ -1,15 +1,67 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { ArrowRight, Terminal, Brain, Layers, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Terminal, Brain, Layers, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { PERSONAL_INFO } from '@/data/portfolioData';
 
 const HeroCanvas = dynamic(() => import('../3d/HeroCanvas'), { ssr: false });
 
+const HERO_SLIDES = [
+  {
+    src: '/images/DSC04499.jpg.jpeg',
+    alt: 'Eranda Sathsara - Black Suit Walking',
+    position: 'center 20%',
+  },
+  {
+    src: '/images/903673ba-0ffe-4a2a-b89a-60bd48b1736a.png',
+    alt: 'Eranda Sathsara - Beige Blazer Scenic',
+    position: 'center 25%',
+  },
+  {
+    src: '/images/eranda_tuxedo.png',
+    alt: 'Eranda Sathsara - White Tuxedo',
+    position: 'center 20%',
+  },
+  {
+    src: '/images/eranda_suit_thinking.png',
+    alt: 'Eranda Sathsara - Suit Thinking Pose',
+    position: 'center 35%',
+  },
+  {
+    src: '/images/eranda_stairs.png',
+    alt: 'Eranda Sathsara - Moratuwa Campus',
+    position: 'center 30%',
+  },
+  {
+    src: '/images/eranda_tree.png',
+    alt: 'Eranda Sathsara - Outdoor Greenery',
+    position: 'center 30%',
+  },
+];
+
 export default function HeroSection() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (isHovered) return;
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isHovered]);
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  };
+
   return (
     <section
       id="hero"
@@ -17,23 +69,68 @@ export default function HeroSection() {
       style={{ background: '#07090e' }}
     >
       {/* ══════════════════════════════════════════════════
-          LAYER 1 — Zoomed-out Photo background container
+          LAYER 1 — Zoomed-out Photo background container (Automatic Carousel)
           Right-aligned on desktop so body, suit, tie & face are fully visible
       ══════════════════════════════════════════════════ */}
       <div className="absolute inset-0 z-0 flex items-center justify-end overflow-hidden pointer-events-none p-4 sm:p-8">
-        <div className="relative w-full lg:w-[54vw] xl:w-[48vw] h-[85vh] lg:h-[90vh] rounded-3xl overflow-hidden transition-all duration-700">
-          <Image
-            src="/images/eranda_suit_thinking.png"
-            alt="Eranda Sathsara"
-            fill
-            priority
-            quality={100}
-            sizes="(max-width: 1024px) 100vw, 54vw"
-            style={{
-              objectFit: 'cover',
-              objectPosition: 'center 40%', // Perfectly framed: full head, suit, arms & pose
-            }}
-          />
+        <div
+          className="relative w-full lg:w-[54vw] xl:w-[48vw] h-[85vh] lg:h-[90vh] rounded-3xl overflow-hidden transition-all duration-700 pointer-events-auto group/hero-carousel"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, scale: 1.04 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-0 w-full h-full"
+            >
+              <Image
+                src={HERO_SLIDES[currentSlide].src}
+                alt={HERO_SLIDES[currentSlide].alt}
+                fill
+                priority
+                quality={100}
+                sizes="(max-width: 1024px) 100vw, 54vw"
+                style={{
+                  objectFit: 'cover',
+                  objectPosition: HERO_SLIDES[currentSlide].position,
+                }}
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Controls - Arrows */}
+          <button
+            onClick={handlePrev}
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-amber-500 hover:text-black text-white transition-all z-20 border border-white/20 opacity-0 group-hover/hero-carousel:opacity-100 backdrop-blur-md shadow-lg"
+            aria-label="Previous Slide"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={handleNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-amber-500 hover:text-black text-white transition-all z-20 border border-white/20 opacity-0 group-hover/hero-carousel:opacity-100 backdrop-blur-md shadow-lg"
+            aria-label="Next Slide"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="absolute bottom-6 right-6 z-20 flex items-center gap-2 bg-black/60 px-3.5 py-1.5 rounded-full border border-white/15 backdrop-blur-md shadow-lg">
+            {HERO_SLIDES.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                className={`h-2 rounded-full transition-all duration-500 ${
+                  currentSlide === idx ? 'w-7 bg-amber-500' : 'w-2 bg-white/40 hover:bg-white/70'
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 

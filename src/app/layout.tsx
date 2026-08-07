@@ -3,12 +3,21 @@ import './globals.css';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import CustomCursor from '@/components/ui/CustomCursor';
+import LoadingScreen from '@/components/ui/LoadingScreen';
 
 export const metadata: Metadata = {
   title: 'Eranda Sathsara Abewardhana | AI Engineer & Full-Stack Developer',
   description: 'Portfolio of Eranda Sathsara Abewardhana — AI Engineer & Full-Stack Developer specializing in Multi-Agent AI systems, RAG, FastAPI, PyTorch, and Next.js.',
   keywords: ['Eranda Sathsara Abewardhana', 'AI Engineer', 'Machine Learning Engineer', 'Full-Stack Developer', 'Multi-Agent AI', 'RAG', 'FastAPI', 'Next.js', 'PyTorch', 'University of Moratuwa'],
   authors: [{ name: 'Eranda Sathsara Abewardhana' }],
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon.png', type: 'image/png' },
+      { url: '/favicon.ico' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
 
   openGraph: {
     title: 'Eranda Sathsara Abewardhana | AI Engineer & Full-Stack Developer',
@@ -25,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="bg-[#07090e] text-gray-100 antialiased selection:bg-[#e06b3a] selection:text-white">
+        <LoadingScreen />
         <CustomCursor />
         <Navbar />
         <main className="min-h-screen">{children}</main>
