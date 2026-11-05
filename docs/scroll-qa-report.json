@@ -1,0 +1,54 @@
+{
+  "checks": [
+    "Pinned zoom-in, pull-back, reverse scroll, native wheel scrolling, and skip link at four screen sizes",
+    "Project cover zoom follows viewport position",
+    "Reduced motion removes the pinned timeline and media zoom"
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "wideScale": 0.928,
+      "closeScale": 2.15,
+      "pullbackScale": 0.979,
+      "reverseScale": 0.928,
+      "wheelScrolls": true
+    },
+    {
+      "width": 768,
+      "wideScale": 0.928,
+      "closeScale": 2.149,
+      "pullbackScale": 0.978,
+      "reverseScale": 0.928,
+      "wheelScrolls": true
+    },
+    {
+      "width": 390,
+      "wideScale": 0.928,
+      "closeScale": 2.149,
+      "pullbackScale": 0.979,
+      "reverseScale": 0.928,
+      "wheelScrolls": true
+    },
+    {
+      "width": 320,
+      "wideScale": 0.928,
+      "closeScale": 2.149,
+      "pullbackScale": 0.979,
+      "reverseScale": 0.928,
+      "wheelScrolls": true
+    }
+  ],
+  "errors": [],
+  "projectZoom": {
+    "enteringScale": 1.14071,
+    "centeredScale": 1
+  },
+  "reducedMotion": {
+    "trackHeight": 844,
+    "viewportHeight": 844,
+    "sticky": "relative",
+    "secondPhase": "none",
+    "projectScale": 1
+  },
+  "passed": true
+}

@@ -1,0 +1,371 @@
+/* Scroll positions drive the camera directly, so reversing scroll reverses the scene. */
+.portfolio .p-scroll-zoom-frame,
+.portfolio .p-scroll-zoom-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.portfolio .p-scroll-zoom-frame {
+  overflow: hidden;
+}
+.portfolio .p-scroll-zoom-media {
+  transform-origin: center;
+  will-change: transform;
+}
+.portfolio .p-about-photo-frame .p-scroll-zoom-frame {
+  overflow: hidden;
+}
+.portfolio .p-portrait {
+  transform-origin: 52% 36%;
+}
+
+.portfolio .p-scroll-story {
+  position: relative;
+  height: 260svh;
+  min-height: 1600px;
+  scroll-margin-top: 0;
+  background: var(--ink);
+  isolation: isolate;
+}
+.portfolio .p-story-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 600px;
+  overflow: hidden;
+  background: #17120f;
+  perspective: 1200px;
+}
+.portfolio .p-story-topline {
+  position: absolute;
+  top: 112px;
+  left: 4.5%;
+  right: 4.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  z-index: 6;
+  color: var(--muted);
+  font-size: 9px;
+}
+.portfolio .p-story-topline a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-block: 8px;
+  border-bottom: 1px solid #cf9a7266;
+  color: var(--ivory);
+}
+.portfolio .p-story-topline a:hover {
+  color: var(--copper);
+}
+.portfolio .p-story-light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.portfolio .p-story-light-warm {
+  background: radial-gradient(ellipse at 63% 39%, #b8763d66, transparent 60%);
+}
+.portfolio .p-story-light-cool {
+  background: radial-gradient(ellipse at 32% 39%, #6baf9b66, transparent 60%);
+}
+.portfolio .p-story-ghost {
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  top: 28%;
+  text-align: center;
+  font:
+    600 clamp(160px, 26vw, 450px) / 0.85 var(--font-display),
+    sans-serif;
+  letter-spacing: 0.015em;
+  color: transparent;
+  -webkit-text-stroke: 1px #cf9a7255;
+  pointer-events: none;
+}
+.portfolio .p-story-subject {
+  position: absolute;
+  top: 8%;
+  bottom: -14%;
+  left: 29%;
+  width: 45%;
+  transform-origin: 50% 35%;
+  mask-image: radial-gradient(
+    ellipse 66% 62% at 50% 46%,
+    #000 39%,
+    transparent 82%
+  );
+  will-change: transform;
+}
+.portfolio .p-story-subject img {
+  object-fit: contain;
+  object-position: center;
+  filter: grayscale(0.1) saturate(1.08) sepia(0.03) brightness(0.86) contrast(1.05);
+}
+.portfolio .p-story-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      #11100e80 0%,
+      transparent 25%,
+      transparent 70%,
+      #11100ed6 100%
+    ),
+    linear-gradient(90deg, transparent 0%, transparent 53%, #11100e66 100%);
+  pointer-events: none;
+}
+.portfolio .p-story-copy {
+  position: absolute;
+  top: 35%;
+  left: 5%;
+  z-index: 4;
+  pointer-events: none;
+  max-width: 70%;
+}
+.portfolio .p-story-copy > .p-micro {
+  color: var(--copper);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  margin-bottom: 26px;
+}
+.portfolio .p-story-copy > .p-display {
+  font-size: clamp(70px, 9.2vw, 148px);
+  text-shadow: 0 4px 45px #11100e35;
+}
+.portfolio .p-story-copy > span {
+  display: block;
+  color: #c2bbb0;
+  font-size: 13px;
+  line-height: 1.8;
+  margin-top: 25px;
+  text-shadow: 0 2px 12px #000;
+}
+.portfolio .p-story-copy-two {
+  top: 38%;
+  left: 49%;
+  max-width: 47%;
+  opacity: 0;
+}
+.portfolio .p-story-copy-two > .p-display {
+  font-size: clamp(60px, 7.4vw, 118px);
+}
+.portfolio .p-story-copy-three {
+  top: auto;
+  bottom: 15%;
+  left: 5%;
+  opacity: 0;
+  max-width: 90%;
+}
+.portfolio .p-story-copy-three > .p-display {
+  font-size: clamp(75px, 9.8vw, 156px);
+}
+.portfolio .p-story-depth {
+  position: absolute;
+  top: 39%;
+  right: 3%;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  z-index: 4;
+  pointer-events: none;
+}
+.portfolio .p-story-depth > span.p-micro {
+  writing-mode: vertical-rl;
+  color: var(--muted);
+  font-size: 7px;
+}
+.portfolio .p-story-depth-track {
+  height: 130px;
+  width: 1px;
+  background: #cf9a7233;
+}
+.portfolio .p-story-depth-track > i {
+  display: block;
+  width: 1px;
+  height: 100%;
+  background: var(--copper);
+  transform-origin: top;
+}
+.portfolio .p-story-chapters {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 130px;
+  font-size: 7px;
+  letter-spacing: 0.04em;
+}
+.portfolio .p-story-bottom {
+  position: absolute;
+  bottom: 33px;
+  left: 4.5%;
+  right: 4.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  z-index: 5;
+  color: var(--muted);
+  font-size: 8px;
+}
+.portfolio .p-story-bottom > svg {
+  color: var(--copper);
+}
+
+@media (max-width: 900px) {
+  .portfolio .p-scroll-story {
+    height: 235svh;
+    min-height: 0;
+  }
+  .portfolio .p-story-stage {
+    min-height: 500px;
+  }
+  .portfolio .p-story-copy-two {
+    left: 43%;
+    max-width: 53%;
+  }
+  .portfolio .p-story-depth {
+    right: 2%;
+    top: auto;
+    bottom: 16%;
+  }
+  .portfolio .p-story-depth > .p-micro,
+  .portfolio .p-story-chapters {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .portfolio .p-scroll-story {
+    height: 230svh;
+  }
+  .portfolio .p-story-stage {
+    min-height: 480px;
+  }
+  .portfolio .p-story-topline {
+    top: 92px;
+    left: 5%;
+    right: 5%;
+    font-size: 6px;
+    gap: 12px;
+  }
+  .portfolio .p-story-topline > span {
+    max-width: 180px;
+    line-height: 1.8;
+  }
+  .portfolio .p-story-topline a {
+    white-space: nowrap;
+    gap: 5px;
+    font-size: 8px;
+  }
+  .portfolio .p-story-subject {
+    top: 13%;
+    bottom: 5%;
+    left: 1%;
+    width: 98%;
+    mask-image: radial-gradient(
+      ellipse 65% 61% at 50% 45%,
+      #000 38%,
+      transparent 83%
+    );
+  }
+  .portfolio .p-story-ghost {
+    top: 32%;
+    font-size: 34vw;
+  }
+  .portfolio .p-story-copy {
+    top: auto;
+    bottom: 16%;
+    left: 5%;
+    max-width: 90%;
+  }
+  .portfolio .p-story-copy > .p-micro {
+    font-size: 7px;
+    margin-bottom: 17px;
+  }
+  .portfolio .p-story-copy > .p-display {
+    font-size: 18vw;
+  }
+  .portfolio .p-story-copy > span {
+    font-size: 11px;
+    margin-top: 17px;
+  }
+  .portfolio .p-story-copy-two {
+    top: auto;
+    bottom: 18%;
+    left: 5%;
+    max-width: 90%;
+  }
+  .portfolio .p-story-copy-two > .p-display {
+    font-size: 17vw;
+  }
+  .portfolio .p-story-copy-three {
+    bottom: 16%;
+  }
+  .portfolio .p-story-copy-three > .p-display {
+    font-size: 17vw;
+  }
+  .portfolio .p-story-depth {
+    right: 5%;
+    bottom: 15%;
+  }
+  .portfolio .p-story-bottom {
+    left: 5%;
+    right: 5%;
+    bottom: 24px;
+    font-size: 6px;
+    gap: 20px;
+  }
+  .portfolio .p-story-bottom > span:last-child {
+    display: none;
+  }
+}
+@media (max-height: 650px) and (min-width: 641px) {
+  .portfolio .p-story-stage {
+    min-height: 0;
+  }
+  .portfolio .p-story-topline {
+    top: 90px;
+  }
+  .portfolio .p-story-copy {
+    top: 33%;
+  }
+  .portfolio .p-story-copy > .p-display,
+  .portfolio .p-story-copy-three > .p-display {
+    font-size: 13svh;
+  }
+  .portfolio .p-story-copy > .p-micro {
+    margin-bottom: 15px;
+  }
+  .portfolio .p-story-copy > span {
+    font-size: 11px;
+    margin-top: 15px;
+  }
+  .portfolio .p-story-copy-three {
+    top: auto;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portfolio .p-scroll-story {
+    height: auto;
+    min-height: 0;
+  }
+  .portfolio .p-story-stage {
+    position: relative;
+    height: min(850px, 100svh);
+    min-height: 570px;
+  }
+  .portfolio .p-scroll-zoom-media,
+  .portfolio .p-story-subject {
+    will-change: auto;
+  }
+  .portfolio .p-story-copy-two,
+  .portfolio .p-story-copy-three,
+  .portfolio .p-story-depth,
+  .portfolio .p-story-bottom {
+    display: none;
+  }
+}

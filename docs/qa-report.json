@@ -1,0 +1,74 @@
+{
+  "viewports": [
+    {
+      "width": 1440,
+      "viewport": 1440,
+      "page": 1440,
+      "body": 1440
+    },
+    {
+      "width": 1920,
+      "viewport": 1920,
+      "page": 1920,
+      "body": 1920
+    },
+    {
+      "width": 1366,
+      "viewport": 1366,
+      "page": 1366,
+      "body": 1366
+    },
+    {
+      "width": 1024,
+      "viewport": 1024,
+      "page": 1024,
+      "body": 1024
+    },
+    {
+      "width": 768,
+      "viewport": 768,
+      "page": 768,
+      "body": 768
+    },
+    {
+      "width": 390,
+      "viewport": 390,
+      "page": 390,
+      "body": 390
+    },
+    {
+      "width": 375,
+      "viewport": 375,
+      "page": 375,
+      "body": 375
+    },
+    {
+      "width": 320,
+      "viewport": 320,
+      "page": 320,
+      "body": 320
+    }
+  ],
+  "checks": [
+    "Mobile menu: open, Escape, anchor navigation, close",
+    "Four case studies: dialogs, focus restoration, Escape, repositories, video playback, accessibility; CV-backed DocCraft details preserve planned work",
+    "Expertise accordion and rendered interactive network, pause control",
+    "Research detail dialog",
+    "Experience and award disclosures",
+    "Email clipboard confirmation, email/phone/social links",
+    "CV-backed contact number, structured data, language skills, and suitable professional content",
+    "Original portfolio route preserved and serves HTTP 200",
+    "Reduced motion disables the moving typography",
+    "Normal motion: portrait parallax, animated network, actual paused frames, marquee pause"
+  ],
+  "errors": [],
+  "failedRequests": [],
+  "accessibility": [],
+  "initialLoad": {
+    "responseMs": 10,
+    "loadMs": 298,
+    "transferredKB": 562,
+    "threeJsLoaded": false
+  },
+  "passed": true
+}

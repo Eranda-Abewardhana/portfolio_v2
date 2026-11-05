@@ -17,7 +17,7 @@ function Particles({ count = 60 }: { count?: number }) {
   return (
     <points ref={mesh}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" array={positions.current} count={count} itemSize={3} />
+        <bufferAttribute attach="attributes-position" args={[positions.current, 3]} />
       </bufferGeometry>
       <pointsMaterial color="#f59e0b" size={0.04} transparent opacity={0.45} sizeAttenuation />
     </points>

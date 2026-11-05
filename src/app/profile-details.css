@@ -1,0 +1,279 @@
+/* CV-backed additions follow the existing editorial layout. */
+.portfolio .p-project-doccraft {
+  grid-column: 1 / -1;
+}
+.portfolio .p-project-doccraft .p-project-cover {
+  height: 440px;
+}
+.portfolio .p-doccraft-visual {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  gap: 65px;
+  padding: 55px;
+  background:
+    radial-gradient(ellipse at 72% 35%, #6e58312b, transparent 70%), #211f19;
+  text-align: left;
+}
+.portfolio .p-doccraft-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.portfolio .p-doccraft-copy > .p-micro {
+  font-size: 8px;
+  color: var(--muted);
+}
+.portfolio .p-doccraft-copy > .p-display {
+  font-size: clamp(75px, 8vw, 118px);
+  margin-top: 18px;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+.portfolio .p-doccraft-copy > .p-display > span {
+  color: var(--copper);
+}
+.portfolio .p-doccraft-copy > p {
+  color: #d0c8ba;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-top: 17px;
+  letter-spacing: -0.02em;
+}
+.portfolio .p-doccraft-copy > .p-doccraft-caption {
+  margin-top: 30px;
+  font-size: 7px;
+}
+.portfolio .p-doccraft-system-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  color: var(--muted);
+  font-size: 8px;
+  margin-bottom: 15px;
+}
+.portfolio .p-doccraft-system-label > span:first-child {
+  color: var(--copper);
+}
+.portfolio .p-doccraft-service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.portfolio .p-doccraft-service-grid > div {
+  min-height: 90px;
+  padding: 17px 10px;
+  border: 1px solid #cf9a7238;
+  background: #f0ede603;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 11px;
+  transition:
+    border-color 0.4s,
+    background 0.4s;
+}
+.portfolio .p-doccraft-service-grid svg {
+  color: var(--copper);
+}
+.portfolio .p-project-cover:hover .p-doccraft-service-grid > div {
+  border-color: #cf9a7270;
+  background: #cf9a7209;
+}
+.portfolio .p-doccraft-integrations {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 7px;
+  color: var(--muted);
+  padding-block: 15px;
+  border-bottom: 1px solid var(--rule);
+}
+.portfolio .p-doccraft-plan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-top: 14px;
+}
+.portfolio .p-doccraft-plan > .p-micro {
+  color: var(--muted);
+  font-size: 7px;
+  max-width: 135px;
+}
+.portfolio .p-doccraft-plan > span:last-child {
+  font-size: 10px;
+  white-space: nowrap;
+  color: var(--muted);
+}
+.portfolio .p-doccraft-plan strong {
+  font:
+    600 28px/1 var(--font-display),
+    sans-serif;
+  color: var(--ivory);
+  margin-right: 3px;
+}
+.portfolio .p-doccraft-plan i {
+  color: var(--copper);
+  font-style: normal;
+  margin-inline: 9px;
+}
+.portfolio .p-dialog-architecture {
+  position: relative;
+  height: 355px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+.portfolio .p-dialog-architecture .p-doccraft-visual {
+  padding: 28px;
+  gap: 30px;
+  grid-template-columns: 0.75fr 1.25fr;
+}
+.portfolio .p-dialog-architecture .p-doccraft-copy > .p-display {
+  font-size: 65px;
+}
+.portfolio .p-dialog-architecture .p-doccraft-copy > p {
+  font-size: 15px;
+}
+.portfolio .p-dialog-architecture .p-doccraft-caption {
+  display: none;
+}
+.portfolio .p-dialog-architecture .p-doccraft-service-grid > div {
+  min-height: 75px;
+}
+.portfolio .p-profile-notes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 35px;
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--rule);
+  padding-top: 30px;
+}
+.portfolio .p-profile-notes h3 {
+  color: var(--copper);
+  font-size: 9px;
+  margin-bottom: 12px;
+}
+.portfolio .p-profile-notes p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.85;
+  max-width: 350px;
+}
+@media (max-width: 1100px) {
+  .portfolio .p-doccraft-visual {
+    padding: 45px 35px;
+    gap: 35px;
+  }
+  .portfolio .p-doccraft-copy > .p-display {
+    font-size: 82px;
+  }
+}
+@media (max-width: 800px) {
+  .portfolio .p-doccraft-visual {
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: 25px;
+    padding-inline: 28px;
+  }
+  .portfolio .p-doccraft-copy > .p-display {
+    font-size: 68px;
+  }
+  .portfolio .p-doccraft-copy > p {
+    font-size: 16px;
+  }
+  .portfolio .p-doccraft-copy > .p-doccraft-caption {
+    font-size: 6px;
+  }
+  .portfolio .p-doccraft-system-label {
+    font-size: 7px;
+  }
+  .portfolio .p-doccraft-service-grid > div {
+    min-height: 80px;
+    font-size: 10px;
+  }
+  .portfolio .p-doccraft-plan {
+    gap: 10px;
+  }
+  .portfolio .p-profile-notes {
+    gap: 25px;
+  }
+  .portfolio .p-profile-notes p {
+    font-size: 11px;
+  }
+}
+@media (max-width: 640px) {
+  .portfolio .p-project-doccraft .p-project-cover {
+    height: 545px;
+  }
+  .portfolio .p-doccraft-visual,
+  .portfolio .p-dialog-architecture .p-doccraft-visual {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 52px 23px 30px;
+    align-content: center;
+  }
+  .portfolio .p-doccraft-copy > .p-display,
+  .portfolio .p-dialog-architecture .p-doccraft-copy > .p-display {
+    font-size: 72px;
+    margin-top: 12px;
+  }
+  .portfolio .p-doccraft-copy > p,
+  .portfolio .p-dialog-architecture .p-doccraft-copy > p {
+    font-size: 15px;
+    margin-top: 10px;
+  }
+  .portfolio .p-doccraft-copy > p > br {
+    display: none;
+  }
+  .portfolio .p-doccraft-copy > .p-doccraft-caption {
+    display: none;
+  }
+  .portfolio .p-doccraft-service-grid {
+    gap: 8px;
+  }
+  .portfolio .p-doccraft-service-grid > div,
+  .portfolio .p-dialog-architecture .p-doccraft-service-grid > div {
+    min-height: 74px;
+    padding: 13px 5px;
+    font-size: 10px;
+    gap: 9px;
+  }
+  .portfolio .p-doccraft-service-grid svg {
+    width: 21px;
+    height: 21px;
+  }
+  .portfolio .p-doccraft-plan strong {
+    font-size: 25px;
+  }
+  .portfolio .p-doccraft-plan i {
+    margin-inline: 6px;
+  }
+  .portfolio .p-doccraft-plan > .p-micro {
+    max-width: 120px;
+    font-size: 6px;
+  }
+  .portfolio .p-dialog-architecture {
+    height: 500px;
+  }
+  .portfolio .p-dialog-architecture .p-doccraft-visual {
+    padding: 25px 15px;
+    gap: 25px;
+  }
+  .portfolio .p-dialog-architecture .p-doccraft-copy > .p-display {
+    font-size: 64px;
+  }
+  .portfolio .p-profile-notes {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding-top: 25px;
+  }
+  .portfolio .p-profile-notes p {
+    font-size: 12px;
+  }
+}

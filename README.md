@@ -1,4 +1,14 @@
-# Eranda Sathsara Abewardhana — 3D Interactive AI & Full-Stack Portfolio
+# Eranda Sathsara — AI & Software Engineering Portfolio
+
+The redesigned portfolio is available at `/`. The original portfolio is preserved at `/legacy`, together with all its section components and original media. See [the reference analysis and design notes](docs/REDESIGN.md) for the new design system, content decisions, architecture, and verification details.
+
+Run `npm install` and `npm run dev` to preview locally. Run `npm run build` and `npm start` for production. Set `NEXT_PUBLIC_SITE_URL` to the actual deployment origin for canonical and social metadata.
+
+The remainder of this README documents the preserved original implementation.
+
+---
+
+# Original 3D Interactive Portfolio
 
 An interactive, high-performance **3D Portfolio Website** built for **Eranda Sathsara Abewardhana**, final-year BSc (Hons) Artificial Intelligence undergraduate at the University of Moratuwa. Specializing in Multi-Agent AI systems, RAG architectures, FastAPI microservices, and Cloud-Native engineering.
 
