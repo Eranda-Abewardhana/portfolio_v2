@@ -48,7 +48,7 @@ export default function About() {
             <span>what could be better?</span>
           </p>
           <p>
-            I’m an AI and software engineer based in {PERSONAL_INFO.location}.
+            I’m {PERSONAL_INFO.name}, an AI and software engineer based in {PERSONAL_INFO.location}.
             My work connects applied AI with backend and platform engineering,
             from cross-platform mobile applications to production AI backends
             and cloud-native systems.

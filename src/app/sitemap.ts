@@ -1,14 +1,13 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+import { getSiteUrl, isIndexableDeployment } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://erandasathsara.com";
-  const currentDate = new Date().toISOString();
+  if (!isIndexableDeployment()) return [];
+  const baseUrl = getSiteUrl();
 
   return [
     {
-      url: baseUrl,
-      lastModified: currentDate,
+      url: `${baseUrl}/`,
       changeFrequency: "weekly",
       priority: 1.0,
     },

@@ -1,24 +1,15 @@
 import { MetadataRoute } from 'next';
+import { getSiteUrl, isIndexableDeployment } from '@/lib/site';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://erandasathsara.com';
+  const baseUrl = getSiteUrl();
+
+  if (!isIndexableDeployment()) {
+    return { rules: { userAgent: '*', disallow: '/' } };
+  }
 
   return {
-    rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/_next/', '/private/'],
-      },
-      {
-        userAgent: 'Googlebot',
-        allow: '/',
-      },
-      {
-        userAgent: 'Bingbot',
-        allow: '/',
-      },
-    ],
+    rules: { userAgent: '*', allow: '/', disallow: ['/api/', '/private/'] },
     sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

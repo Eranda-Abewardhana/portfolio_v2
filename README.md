@@ -2,7 +2,9 @@
 
 The redesigned portfolio is available at `/`. The original portfolio is preserved at `/legacy`, together with all its section components and original media. See [the reference analysis and design notes](docs/REDESIGN.md) for the new design system, content decisions, architecture, and verification details.
 
-Run `npm install` and `npm run dev` to preview locally. Run `npm run build` and `npm start` for production. Set `NEXT_PUBLIC_SITE_URL` to the actual deployment origin for canonical and social metadata.
+Run `npm install` and `npm run dev` to preview locally. Run `npm run build` and `npm start` for production. For a custom domain, set `NEXT_PUBLIC_SITE_URL` to your preferred public origin for canonical and social metadata.
+
+For Vercel, the production URL is detected automatically. See [SEO setup and Google Search Console verification](docs/SEO.md) and [.env.example](.env.example) for deployment settings and indexing steps.
 
 The remainder of this README documents the preserved original implementation.
 

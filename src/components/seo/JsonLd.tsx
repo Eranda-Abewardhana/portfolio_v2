@@ -1,28 +1,22 @@
-import React from "react";
 import { PERSONAL_INFO, PROJECTS, EDUCATION } from "@/data/portfolioProfile";
+import { getSiteUrl } from "@/lib/site";
 
 export default function JsonLd() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://erandasathsara.com";
+  const baseUrl = getSiteUrl();
 
   const personSchema = {
-    "@context": "https://schema.org",
     "@type": "Person",
     "@id": `${baseUrl}/#person`,
     name: PERSONAL_INFO.name,
     alternateName: [
       PERSONAL_INFO.shortName,
       "Eranda Abewardhana",
-      "Eranda Sathsara Abewardhana",
       "Eranda S. Abewardhana",
-      "Sathsara Eranda",
-      "sathsara aewardhana",
-      "Eranda Aewardhana",
-      "Sathsara Eranda Abewardhana",
     ],
-    url: baseUrl,
-    image: `${baseUrl}${PERSONAL_INFO.images.heroPortrait}`,
-    jobTitle: "AI Engineer & Full-Stack Developer",
+    url: `${baseUrl}/`,
+    mainEntityOfPage: { "@id": `${baseUrl}/#profilepage` },
+    image: `${baseUrl}/images/optimized/eranda-hero.webp`,
+    jobTitle: "AI & Software Engineer",
     description: PERSONAL_INFO.summary,
     email: PERSONAL_INFO.email,
     telephone: PERSONAL_INFO.phone,
@@ -35,7 +29,6 @@ export default function JsonLd() {
     alumniOf: EDUCATION.map((edu) => ({
       "@type": "EducationalOrganization",
       name: edu.institution,
-      programName: edu.degree,
     })),
     knowsAbout: [
       "Artificial Intelligence",
@@ -61,19 +54,15 @@ export default function JsonLd() {
       "Cloud-Native Systems",
       "Payment Gateway Integrations",
     ],
-    sameAs: [
-      PERSONAL_INFO.github,
-      PERSONAL_INFO.linkedin,
-      PERSONAL_INFO.whatsapp,
-    ],
+    sameAs: [PERSONAL_INFO.github, PERSONAL_INFO.linkedin],
   };
 
   const websiteSchema = {
-    "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${baseUrl}/#website`,
-    url: baseUrl,
-    name: `${PERSONAL_INFO.name} | Official Portfolio & AI Engineer Profile`,
+    url: `${baseUrl}/`,
+    name: PERSONAL_INFO.name,
+    alternateName: `${PERSONAL_INFO.shortName} Portfolio`,
     description: PERSONAL_INFO.summary,
     publisher: {
       "@id": `${baseUrl}/#person`,
@@ -82,11 +71,12 @@ export default function JsonLd() {
   };
 
   const profilePageSchema = {
-    "@context": "https://schema.org",
     "@type": "ProfilePage",
     "@id": `${baseUrl}/#profilepage`,
-    url: baseUrl,
-    name: `${PERSONAL_INFO.name} - AI Engineer & Full-Stack Developer`,
+    url: `${baseUrl}/`,
+    name: `${PERSONAL_INFO.name} | AI & Software Engineer`,
+    description: PERSONAL_INFO.summary,
+    inLanguage: "en-US",
     mainEntity: {
       "@id": `${baseUrl}/#person`,
     },
@@ -96,8 +86,8 @@ export default function JsonLd() {
   };
 
   const projectsSchema = {
-    "@context": "https://schema.org",
     "@type": "ItemList",
+    "@id": `${baseUrl}/#projects`,
     name: "Featured Projects by Eranda Sathsara Abewardhana",
     itemListElement: PROJECTS.map((proj, idx) => ({
       "@type": "ListItem",
@@ -108,30 +98,22 @@ export default function JsonLd() {
         description: proj.description,
         applicationCategory: proj.category,
         operatingSystem: "Cross-platform",
-        url: proj.github || proj.frontendGithub || baseUrl,
+        url: proj.github || proj.frontendGithub || `${baseUrl}/#work`,
+        author: { "@id": `${baseUrl}/#person` },
         keywords: proj.tags.join(", "),
       },
     })),
   };
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsSchema) }}
-      />
-    </>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [personSchema, websiteSchema, profilePageSchema, projectsSchema],
+        }).replace(/</g, "\\u003c"),
+      }}
+    />
   );
 }

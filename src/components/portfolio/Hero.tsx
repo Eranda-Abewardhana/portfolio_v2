@@ -60,16 +60,18 @@ export default function Hero() {
             <span className="p-status-dot" />
             <span>AI / BACKEND / PLATFORM ENGINEERING</span>
           </motion.div>
-          <h1 id="hero-heading" className="p-display p-hero-heading">
+          <p className="p-display p-hero-heading">
             <span>BUILDING</span>
             <span className="p-outline">
               INTELLIGENCE<span className="p-copper">.</span>
             </span>
-          </h1>
+          </p>
           <div className="p-hero-intro">
             <span className="p-hero-line" />
             <div>
-              <p className="p-hero-name">I’m Eranda Sathsara.</p>
+              <h1 id="hero-heading" className="p-hero-name">
+                I’m {PERSONAL_INFO.name}.
+              </h1>
               <p>
                 I turn complex ideas into thoughtful AI systems
                 <br className="p-desktop-break" /> and software that works in
@@ -125,7 +127,7 @@ export default function Hero() {
           >
             <Image
               src="/images/optimized/eranda-hero.webp"
-              alt="Eranda Sathsara in a dark suit, photographed outdoors"
+              alt="Eranda Sathsara Abewardhana in a dark suit, photographed outdoors"
               fill
               priority
               sizes="(max-width: 640px) 100vw, (max-width: 1000px) 55vw, 46vw"

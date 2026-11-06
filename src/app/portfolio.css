@@ -448,6 +448,7 @@ html {
 .portfolio .p-hero-name {
   color: var(--ivory);
   font-size: 17px;
+  font-weight: 400;
   margin-bottom: 3px;
 }
 .portfolio .p-hero-actions {

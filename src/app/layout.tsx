@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { getSiteUrl, getGoogleVerification, isIndexableDeployment } from "@/lib/site";
 import "./globals.css";
 import "./portfolio.css";
 import "./scroll-effects.css";
@@ -38,26 +39,23 @@ const displayFont = localFont({
   display: "swap",
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://erandasathsara.com";
+const siteUrl = getSiteUrl();
+const allowIndexing = isIndexableDeployment();
+const googleVerification = getGoogleVerification();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Eranda Sathsara Abewardhana | AI Engineer & Full-Stack Developer",
+    default: "Eranda Sathsara Abewardhana | AI & Software Engineer",
     template: "%s | Eranda Sathsara Abewardhana",
   },
   description:
-    "Eranda Sathsara Abewardhana — AI and Software Engineer focused on backend and platform engineering, RAG, multi-agent systems, FastAPI microservices, and cloud-native delivery. Explore DocCraft, Yukti, robotics, and genomic AI research.",
+    "Eranda Sathsara Abewardhana, AI & Software Engineer in Sri Lanka. Explore projects in RAG, agentic AI, FastAPI backends, cloud platforms, and full-stack development.",
   keywords: [
     "Eranda Sathsara Abewardhana",
     "Eranda Sathsara",
     "Eranda Abewardhana",
     "Eranda S. Abewardhana",
-    "Sathsara Eranda",
-    "sathsara aewardhana",
-    "Eranda Aewardhana",
-    "Sathsara Eranda Abewardhana",
     "AI Engineer Sri Lanka",
     "Machine Learning Engineer Sri Lanka",
     "Multi-Agent AI Engineer",
@@ -96,11 +94,11 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Eranda Sathsara Abewardhana | AI Engineer & Full-Stack Developer",
+    title: "Eranda Sathsara Abewardhana | AI & Software Engineer",
     description:
       "Ideas into reality. AI products, backend and platform engineering, cloud-native systems, and research by Eranda Sathsara Abewardhana.",
-    url: siteUrl,
-    siteName: "Eranda Sathsara Abewardhana Portfolio",
+    url: `${siteUrl}/`,
+    siteName: "Eranda Sathsara Abewardhana",
     locale: "en_US",
     type: "website",
     images: [
@@ -114,27 +112,24 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Eranda Sathsara Abewardhana | AI Engineer & Full-Stack Developer",
+    title: "Eranda Sathsara Abewardhana | AI & Software Engineer",
     description:
       "AI engineering, thoughtful software, and real-world impact. Selected work by Eranda Sathsara Abewardhana.",
     images: ["/images/optimized/social-card.jpg"],
-    creator: "@ErandaSathsara",
   },
   robots: {
-    index: true,
+    index: allowIndexing,
     follow: true,
     nocache: false,
     googleBot: {
-      index: true,
+      index: allowIndexing,
       follow: true,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
-  },
+  ...(googleVerification ? { verification: { google: googleVerification } } : {}),
 };
 
 export default function RootLayout({
