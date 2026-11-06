@@ -6,7 +6,7 @@ Light mode is the default, with white, slate, and deep blue (`#1d4ed8`). The nav
 
 Visitors can download the latest CV from the introduction or contact section. Replace `public/cv/Eranda_Abewardhana_AI_CV.pdf` to update the download.
 
-GSAP and ScrollTrigger sequence the introduction, reveal projects and sections on scroll, and add subtle desktop button movement. Reduced-motion preferences disable these effects. Framer Motion continues to drive the portrait and scroll-camera zoom.
+GSAP, SplitText, DrawSVG, and ScrollTrigger animate individual headline characters, reveal heading words, draw portrait orbits, icons, and DNA strands, and add subtle desktop button movement. Reduced-motion preferences disable these effects and restore plain text and complete SVGs. Framer Motion continues to drive the portrait and scroll-camera zoom.
 
 Run `npm install` and `npm run dev` to preview locally. Run `npm run build` and `npm start` for production. For a custom domain, set `NEXT_PUBLIC_SITE_URL` to your preferred public origin for canonical and social metadata.
 

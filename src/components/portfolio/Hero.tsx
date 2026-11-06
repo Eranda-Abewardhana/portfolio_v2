@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolioProfile";
 import { useReducedMotion } from "@/lib/useReducedMotion";
+import HeroOrbit from "./HeroOrbit";
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -117,8 +118,7 @@ export default function Hero() {
         </div>
         <div className="p-hero-visual">
           <div className="p-portrait-halo" />
-          <div className="p-portrait-orbit p-orbit-one" />
-          <div className="p-portrait-orbit p-orbit-two" />
+          <HeroOrbit />
           <motion.span
             style={{ y: wordY }}
             className="p-portrait-word"

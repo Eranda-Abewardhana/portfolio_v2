@@ -414,6 +414,7 @@ html {
 }
 .portfolio .p-hero-title-word {
   display: block;
+  font-kerning: none;
 }
 .portfolio .p-hero-heading > span + span {
   margin-top: 1px;
@@ -514,23 +515,14 @@ html {
   transform: translateX(-50%);
   z-index: 1;
 }
-.portfolio .p-orbit-two {
-  width: 475px;
-  height: 475px;
-  top: 25px;
-  border-style: dashed;
-  border-color: color-mix(in srgb, var(--copper) 7.1%, transparent);
+.portfolio .p-orbit-art {
+  border: 0;
+  overflow: visible;
+  pointer-events: none;
 }
-.portfolio .p-orbit-one::after {
-  position: absolute;
-  content: "";
-  width: 5px;
-  height: 5px;
-  background: var(--copper);
-  border-radius: 50%;
-  right: 60px;
-  top: 63px;
-  box-shadow: 0 0 20px color-mix(in srgb, var(--copper) 46.7%, transparent);
+.portfolio .p-text-char,
+.portfolio .p-text-word {
+  display: inline-block;
 }
 .portfolio .p-portrait-word {
   position: absolute;
@@ -1119,7 +1111,7 @@ html {
   max-width: 490px;
   margin-bottom: 22px;
 }
-.portfolio .p-about-lead > span {
+.portfolio .p-about-lead > span:not(.p-text-word) {
   color: var(--accent-text);
 }
 .portfolio .p-about-copy .p-text-link {
@@ -1768,11 +1760,6 @@ html {
     height: 340px;
     top: 75px;
   }
-  .portfolio .p-orbit-two {
-    width: 375px;
-    height: 375px;
-    top: 57px;
-  }
   .portfolio .p-portrait-coordinate {
     right: -8px;
   }
@@ -2210,11 +2197,6 @@ html {
     height: 295px;
     top: 36px;
   }
-  .portfolio .p-orbit-two {
-    width: 325px;
-    height: 325px;
-    top: 21px;
-  }
   .portfolio .p-portrait-word {
     top: 120px;
     left: 50%;
@@ -2603,10 +2585,6 @@ html {
   .portfolio .p-portrait-orbit {
     width: 260px;
     height: 260px;
-  }
-  .portfolio .p-orbit-two {
-    width: 285px;
-    height: 285px;
   }
   .portfolio .p-contact-email > a {
     font-size: 19px;

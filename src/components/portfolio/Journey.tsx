@@ -7,6 +7,15 @@ import SectionHeading from "./SectionHeading";
 import { ProjectDialog } from "./Projects";
 
 function DnaVisual() {
+  const reference = Array.from({ length: 35 }, (_, index) => {
+    const x = 20 + index * 15;
+    const y = Number((Math.sin(index * 0.32) * 62).toFixed(2));
+    return { x, y };
+  });
+  const strand = (direction: number) => reference
+    .map(({ x, y }, index) => `${index ? "L" : "M"}${x} ${105 + y * direction}`)
+    .join(" ");
+
   return (
     <svg
       className="p-dna-visual"
@@ -16,9 +25,9 @@ function DnaVisual() {
       aria-label="Diagram of reference and alternate DNA sequences"
     >
       <g>
-        {Array.from({ length: 35 }, (_, index) => {
-          const x = 20 + index * 15;
-          const y = Number((Math.sin(index * 0.32) * 62).toFixed(2));
+        <path d={strand(1)} stroke="var(--copper)" strokeWidth="1.2" strokeOpacity=".7" />
+        <path d={strand(-1)} stroke="var(--ivory)" strokeWidth="1.2" strokeOpacity=".4" />
+        {reference.map(({ x, y }, index) => {
           return (
             <g key={index}>
               <line

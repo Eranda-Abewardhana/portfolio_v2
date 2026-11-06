@@ -3,9 +3,11 @@
 import type { RefObject } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin, useGSAP);
 
 /** GSAP owns entrance wrappers; Framer Motion owns the media inside them. */
 export function usePortfolioAnimations(root: RefObject<HTMLDivElement | null>) {
@@ -14,16 +16,25 @@ export function usePortfolioAnimations(root: RefObject<HTMLDivElement | null>) {
     if (!container) return;
     const media = gsap.matchMedia();
 
-    media.add("(prefers-reduced-motion: no-preference)", () => {
+    media.add("(prefers-reduced-motion: no-preference)", (context) => {
       const select = gsap.utils.selector(container);
       const distance = window.matchMedia("(max-width: 760px)").matches ? 22 : 36;
       const reveals: { element: HTMLElement; animation: gsap.core.Animation }[] = [];
       const clearProps = "transform,opacity,clipPath";
+      const strokeProps = "strokeDasharray,strokeDashoffset";
+      const fontsReady = document.fonts.status === "loaded";
+      let disposed = false;
 
       const hero = container.querySelector<HTMLElement>(".p-hero");
       if (hero && document.documentElement.dataset.portfolioIntro === "pending"
         && window.scrollY < window.innerHeight * 0.6) {
         gsap.set(hero, { visibility: "visible" });
+        const title = fontsReady ? SplitText.create(select(".p-hero-title-word"), {
+          type: "chars", tag: "span", charsClass: "p-text-char", aria: "auto",
+        }) : null;
+        const name = fontsReady ? SplitText.create(select(".p-hero-name"), {
+          type: "words", tag: "span", wordsClass: "p-text-word", aria: "auto",
+        }) : null;
         const intro = gsap.timeline({
           id: "portfolio-intro",
           defaults: { ease: "power3.out", clearProps },
@@ -36,8 +47,9 @@ export function usePortfolioAnimations(root: RefObject<HTMLDivElement | null>) {
           .from(select(".p-hero-topline, .p-hero-eyebrow"), {
             opacity: 0, y: 14, duration: 0.7, stagger: 0.1,
           }, 0.1)
-          .from(select(".p-hero-title-word"), {
-            yPercent: 115, duration: 1.05, stagger: 0.14, ease: "power4.out",
+          .from(title?.chars || select(".p-hero-title-word"), {
+            yPercent: 115, opacity: 0, duration: 0.85,
+            stagger: title ? 0.025 : 0.14, ease: "power4.out",
           }, 0.2)
           .from(select(".p-hero-intro, .p-hero-actions, .p-hero-socials"), {
             opacity: 0, y: 20, duration: 0.75, stagger: 0.1,
@@ -47,7 +59,20 @@ export function usePortfolioAnimations(root: RefObject<HTMLDivElement | null>) {
           }, 0.15)
           .from(select(".p-hero-bottom > *"), {
             opacity: 0, y: 14, duration: 0.65, stagger: 0.075,
-          }, 0.65);
+          }, 0.65)
+          .from(select("[data-orbit-stroke]"), {
+            drawSVG: "0%", duration: 1.2, stagger: 0.06,
+            ease: "power2.inOut", clearProps: strokeProps,
+          }, 0.25)
+          .from(select("[data-orbit-node]"), {
+            opacity: 0, scale: 0, transformOrigin: "50% 50%",
+            duration: 0.4, stagger: 0.06,
+          }, 1);
+        if (name) {
+          intro.from(name.words, {
+            opacity: 0, y: 12, duration: 0.55, stagger: 0.05,
+          }, 0.55);
+        }
 
         reveals.push({ element: hero, animation: intro });
       } else {
@@ -55,10 +80,59 @@ export function usePortfolioAnimations(root: RefObject<HTMLDivElement | null>) {
       }
 
       // Above-page content stays visible when returning to a saved scroll position.
-      function canReveal(element: HTMLElement) {
+      function canReveal(element: Element) {
         const bounds = element.getBoundingClientRect();
         return bounds.bottom > 0 && !(window.scrollY > window.innerHeight * 0.6
           && bounds.top < window.innerHeight);
+      }
+
+      // Word wrappers reflow naturally on resize; do not split fixed text lines.
+      // SplitText registers itself with this GSAP context and restores the DOM on revert.
+      const createTextReveals = context.add("createTextReveals", () => {
+        const headings = select([
+          ".p-section-heading h2", ".p-about-copy h2", ".p-about-lead",
+          ".p-research-intro h2", ".p-contact-heading-link h2",
+        ].join(", ")) as HTMLElement[];
+        for (const heading of headings) {
+          if (!canReveal(heading)) continue;
+          const label = heading.innerText.replace(/\s+/g, " ").trim();
+          const text = SplitText.create(heading, {
+            type: "words", tag: "span", wordsClass: "p-text-word", aria: "auto",
+          });
+          // Keep spaces at explicit line breaks in heading and section names.
+          heading.setAttribute("aria-label", label);
+          heading.querySelectorAll("[id]").forEach((element) => {
+            element.setAttribute("aria-label", label);
+          });
+          const animation = gsap.from(text.words, {
+            opacity: 0, yPercent: 65, duration: 0.75, stagger: 0.045,
+            ease: "power3.out", clearProps,
+            scrollTrigger: { trigger: heading, start: "top 88%", once: true },
+          });
+          reveals.push({ element: heading.closest("a") || heading, animation });
+        }
+      });
+      if (fontsReady) createTextReveals();
+
+      for (const element of select(
+        ".p-heading-arrow, .p-doccraft-service-grid, .p-dna-visual, .p-contact-arrow",
+      ) as Element[]) {
+        if (!canReveal(element)) continue;
+        const shapes = element.querySelectorAll("path, line, polyline, polygon, rect, circle, ellipse");
+        const animation = gsap.timeline({
+          scrollTrigger: { trigger: element, start: "top 84%", once: true },
+        });
+        animation.from(shapes, {
+          drawSVG: "0%", duration: 1.15, stagger: 0.015,
+          ease: "power2.inOut", clearProps: strokeProps,
+        });
+        if (element.matches(".p-dna-visual")) {
+          animation.from(element.querySelectorAll("circle"), {
+            opacity: 0, duration: 0.4, stagger: 0.008, clearProps: "opacity",
+          }, 0.2);
+        }
+        const owner = element.closest<HTMLElement>("a, button") || element.parentElement;
+        if (owner) reveals.push({ element: owner, animation });
       }
 
       const revealTargets = select([
@@ -125,7 +199,6 @@ export function usePortfolioAnimations(root: RefObject<HTMLDivElement | null>) {
       container.addEventListener("focusin", onFocus);
 
       // Recalculate after fonts load or an experience/award disclosure changes height.
-      let disposed = false;
       let refreshFrame = 0;
       let previousHeight = 0;
       const observer = new ResizeObserver(([entry]) => {
@@ -136,7 +209,10 @@ export function usePortfolioAnimations(root: RefObject<HTMLDivElement | null>) {
       });
       observer.observe(container);
       void document.fonts.ready.then(() => {
-        if (!disposed) ScrollTrigger.refresh();
+        if (!disposed) {
+          if (!fontsReady) createTextReveals();
+          ScrollTrigger.refresh();
+        }
       });
 
       return () => {
