@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { getSiteUrl, getGoogleVerification, isIndexableDeployment } from "@/lib/site";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import "./globals.css";
 import "./portfolio.css";
 import "./scroll-effects.css";
 import "./profile-details.css";
+import "./themes.css";
 
 const bodyFont = localFont({
   src: [
@@ -138,9 +140,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${bodyFont.variable} ${displayFont.variable}`}>
+    <html
+      lang="en"
+      data-theme="light"
+      suppressHydrationWarning
+      className={`${bodyFont.variable} ${displayFont.variable}`}
+    >
       <head>
-        <meta name="theme-color" content="#11100e" />
+        <meta name="theme-color" content="#ffffff" suppressHydrationWarning />
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body>{children}</body>
     </html>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
   { label: "Work", id: "work" },
@@ -78,19 +79,22 @@ export default function Navigation() {
           </a>
         ))}
       </nav>
-      <a href="#contact" className="p-nav-contact">
-        Let’s talk <ArrowUpRight size={16} />
-      </a>
-      <button
-        ref={toggle}
-        className="p-menu-toggle"
-        aria-label={open ? "Close navigation" : "Open navigation"}
-        aria-expanded={open}
-        aria-controls="mobile-navigation"
-        onClick={() => setOpen(!open)}
-      >
-        {open ? <X /> : <Menu />}
-      </button>
+      <div className="p-nav-actions">
+        <a href="#contact" className="p-nav-contact">
+          Let’s talk <ArrowUpRight size={16} />
+        </a>
+        <ThemeToggle />
+        <button
+          ref={toggle}
+          className="p-menu-toggle"
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X /> : <Menu />}
+        </button>
+      </div>
       {open && (
         <nav
           id="mobile-navigation"

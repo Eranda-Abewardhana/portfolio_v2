@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useTheme } from "./ThemeProvider";
 
 /** A small CPU-projected 3D network. No WebGL context or model downloads needed. */
 export default function NeuralScene({
@@ -10,6 +11,7 @@ export default function NeuralScene({
   paused: boolean;
   mode: number;
 }) {
+  const { theme } = useTheme();
   const canvas = useRef<HTMLCanvasElement>(null);
   const pointer = useRef({ x: 0, y: 0 });
   const pausedRef = useRef(paused);
@@ -26,6 +28,9 @@ export default function NeuralScene({
     if (!element) return;
     const context = element.getContext("2d");
     if (!context) return;
+    const lineColor = theme === "light" ? "0, 0, 0" : "207, 154, 114";
+    const selectedColor = theme === "light" ? "0, 112, 99" : "247, 220, 183";
+    const glowColor = theme === "light" ? "3, 252, 219" : "170, 105, 61";
     const motionPreference = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     );
@@ -109,8 +114,8 @@ export default function NeuralScene({
         centerY,
         width * 0.46,
       );
-      glow.addColorStop(0, "rgba(170, 105, 61, 0.15)");
-      glow.addColorStop(1, "rgba(170, 105, 61, 0)");
+      glow.addColorStop(0, `rgba(${glowColor}, 0.15)`);
+      glow.addColorStop(1, `rgba(${glowColor}, 0)`);
       context.fillStyle = glow;
       context.fillRect(0, 0, width, height);
       for (let ring = 0; ring < 3; ring++) {
@@ -127,7 +132,7 @@ export default function NeuralScene({
           if (step === 0) context.moveTo(p.x, p.y);
           else context.lineTo(p.x, p.y);
         }
-        context.strokeStyle = `rgba(207,154,114,${0.18 - ring * 0.03})`;
+        context.strokeStyle = `rgba(${lineColor},${0.18 - ring * 0.03})`;
         context.lineWidth = 0.7;
         context.stroke();
       }
@@ -137,7 +142,7 @@ export default function NeuralScene({
         context.beginPath();
         context.moveTo(points[a].x, points[a].y);
         context.lineTo(points[b].x, points[b].y);
-        context.strokeStyle = `rgba(207,154,114,${0.055 + alpha * 0.23})`;
+        context.strokeStyle = `rgba(${lineColor},${0.055 + alpha * 0.23})`;
         context.lineWidth = 0.6;
         context.stroke();
       });
@@ -151,12 +156,12 @@ export default function NeuralScene({
           0,
           Math.PI * 2,
         );
-        context.fillStyle = `rgba(${selected ? "247,220,183" : "207,154,114"},${0.3 + (point.z + 1) * 0.32})`;
+        context.fillStyle = `rgba(${selected ? selectedColor : lineColor},${0.3 + (point.z + 1) * 0.32})`;
         context.fill();
         if (selected && point.z > 0.1) {
           context.beginPath();
           context.arc(point.x, point.y, 6 * point.p, 0, Math.PI * 2);
-          context.strokeStyle = "rgba(207,154,114,0.22)";
+          context.strokeStyle = `rgba(${lineColor},0.22)`;
           context.stroke();
         }
       });
@@ -172,7 +177,7 @@ export default function NeuralScene({
       observer.disconnect();
       motionPreference.removeEventListener("change", onPreference);
     };
-  }, []);
+  }, [theme]);
 
   return (
     <canvas

@@ -212,6 +212,7 @@ try {
     .evaluateAll((scripts) =>
       scripts
         .map((script) => JSON.parse(script.textContent))
+        .flatMap((schema) => schema["@graph"] || [schema])
         .find((schema) => schema["@type"] === "Person"),
     );
   assert.equal(person.telephone, "+94 764 874 820");

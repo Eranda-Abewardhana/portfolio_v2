@@ -26,11 +26,11 @@ function DnaVisual() {
                 y1={105 + y}
                 x2={x}
                 y2={105 - y}
-                stroke="#cf9a72"
+                stroke="var(--copper)"
                 strokeOpacity=".2"
               />
-              <circle cx={x} cy={105 + y} r="2.5" fill="#cf9a72" />
-              <circle cx={x} cy={105 - y} r="2" fill="#e9dfcf" opacity=".6" />
+              <circle cx={x} cy={105 + y} r="2.5" fill="var(--copper)" />
+              <circle cx={x} cy={105 - y} r="2" fill="var(--ivory)" opacity=".6" />
             </g>
           );
         })}

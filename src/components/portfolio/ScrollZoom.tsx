@@ -3,10 +3,10 @@
 import { useRef, type ReactNode } from "react";
 import {
   motion,
-  useReducedMotion,
   useScroll,
   useTransform,
 } from "framer-motion";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 /** Keep the interactive frame fixed while its media follows the scroll position. */
 export default function ScrollZoom({

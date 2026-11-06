@@ -1,0 +1,202 @@
+/* White, black, and mint are the default; dark mode keeps the original palette. */
+:root {
+  color-scheme: light;
+  background: #ffffff;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  background: #11100e;
+}
+body:has(.portfolio) {
+  background: #ffffff;
+}
+:root[data-theme="dark"] body:has(.portfolio) {
+  background: #11100e;
+}
+.portfolio {
+  --ink: #ffffff;
+  --panel: #f5f8f7;
+  --ivory: #111111;
+  --copper: #03fcdb;
+  --muted: #56605e;
+  --rule: #11111126;
+  /* Bright mint is for surfaces and details; text uses black for contrast. */
+  --accent-text: #111111;
+  --on-accent: #111111;
+  --nav-surface: #fffffff2;
+  --nav-text: #3f4846;
+  --hero-glow: #03fcdb1a;
+  --portrait-glow: #03fcdb30;
+  --portrait-glow-soft: #03fcdb08;
+  --portrait-filter: saturate(0.88) contrast(1.02);
+  --project-filter: saturate(0.95) brightness(1);
+  --status-color: #03fcdb;
+  --status-glow: #03fcdb40;
+  --marquee-surface: #03fcdb;
+  --cover-surface: #f0f4f3;
+  --featured-surface: #eff7f5;
+  --featured-shade-rgb: 239 247 245;
+  --featured-label: #454f4d;
+  --cover-control-surface: #ffffffcc;
+  --tech-text: #56605e;
+  --quiet-text: #707875;
+  --audio-glow: #03fcdb38;
+  --audio-surface: #f1faf8;
+  --audio-shadow: #ffffffcc;
+  --outline-accent: #111111;
+  --dialog-backdrop: #15232166;
+  --body-copy: #414947;
+  --band-surface: #f6f8f8;
+  --neural-glow: #03fcdb18;
+  --neural-surface: #ffffff40;
+  --label-surface: #ffffffe6;
+  --contact-glow: #03fcdb18;
+  --mobile-surface: #fffffffc;
+  --menu-shadow: #00000014;
+  --story-surface: #f5fafa;
+  --story-warm-light: #03fcdb40;
+  --story-cool-light: #03fcdb30;
+  --story-rgb: 255 255 255;
+  --story-copy: #414947;
+  --story-text-shadow: transparent;
+  --story-image-filter: saturate(0.78) brightness(1.05) contrast(1.02);
+  --product-glow: #03fcdb26;
+  --product-surface: #f1faf8;
+  --tile-surface: #ffffffb3;
+}
+:root[data-theme="dark"] .portfolio {
+  --ink: #11100e;
+  --panel: #191713;
+  --ivory: #f0ede6;
+  --copper: #cf9a72;
+  --muted: #aaa59c;
+  --rule: rgba(240, 237, 230, 0.15);
+  --accent-text: #cf9a72;
+  --on-accent: #11100e;
+  --nav-surface: #11100ef2;
+  --nav-text: #c9c4bb;
+  --hero-glow: #61412c20;
+  --portrait-glow: #bd774b38;
+  --portrait-glow-soft: #8150350a;
+  --portrait-filter: grayscale(0.12) saturate(1.05) sepia(0.04) brightness(0.9) contrast(1.05);
+  --project-filter: saturate(0.95) brightness(0.9);
+  --status-color: #9eae83;
+  --status-glow: #9eae8326;
+  --marquee-surface: #1a1713;
+  --cover-surface: #26221c;
+  --featured-surface: #1b211e;
+  --featured-shade-rgb: 16 31 25;
+  --featured-label: #cfccbb;
+  --cover-control-surface: #11100e26;
+  --tech-text: #b0aa9f;
+  --quiet-text: #6e665a;
+  --audio-glow: #48392c;
+  --audio-surface: #24201b;
+  --audio-shadow: #211c15;
+  --outline-accent: #cf9a72;
+  --dialog-backdrop: #080705da;
+  --body-copy: #c4beb4;
+  --band-surface: #1b1915;
+  --neural-glow: #251b1240;
+  --neural-surface: #15131040;
+  --label-surface: #11100eb0;
+  --contact-glow: #5d382814;
+  --mobile-surface: #191713fc;
+  --menu-shadow: #0006;
+  --story-surface: #17120f;
+  --story-warm-light: #b8763d66;
+  --story-cool-light: #6baf9b66;
+  --story-rgb: 17 16 14;
+  --story-copy: #c2bbb0;
+  --story-text-shadow: #000;
+  --story-image-filter: grayscale(0.1) saturate(1.08) sepia(0.03) brightness(0.86) contrast(1.05);
+  --product-glow: #6e58312b;
+  --product-surface: #211f19;
+  --tile-surface: #f0ede603;
+}
+
+.portfolio .p-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.portfolio .p-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 88px;
+  min-height: 44px;
+  padding: 9px 13px;
+  border: 1px solid var(--rule);
+  border-radius: 30px;
+  background: var(--ink);
+  color: var(--ivory);
+  font: 11px/1.2 "Courier New", monospace;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.portfolio .p-theme-toggle:hover {
+  background: var(--copper);
+  border-color: var(--copper);
+  color: var(--on-accent);
+}
+.portfolio .p-button-light:hover {
+  color: var(--on-accent);
+}
+.portfolio .p-project-cover:has(img) {
+  color: #f0ede6;
+}
+.portfolio .p-project-1 .p-project-cover {
+  color: var(--ivory);
+}
+.portfolio .p-project-cover:hover .p-project-open {
+  background: var(--copper);
+  color: var(--on-accent);
+}
+.portfolio .p-marquee i {
+  color: var(--accent-text);
+}
+:root:not([data-theme="dark"]) .portfolio .p-audio-top {
+  opacity: 1;
+}
+:root:not([data-theme="dark"]) .portfolio .p-discipline.is-active {
+  border-top-color: var(--copper);
+}
+:root:not([data-theme="dark"]) .portfolio .p-discipline.is-active h3 button {
+  box-shadow: inset 3px 0 var(--copper);
+  padding-left: 12px;
+}
+:root:not([data-theme="dark"]) .portfolio ::selection {
+  color: #111111;
+  background: #03fcdb;
+}
+:root:not([data-theme="dark"]) .portfolio :is(button, a, summary):focus-visible {
+  outline-color: #111111;
+  box-shadow: 0 0 0 4px #03fcdb;
+}
+:root:not([data-theme="dark"]):has(.portfolio)::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+:root:not([data-theme="dark"]):has(.portfolio)::-webkit-scrollbar-thumb {
+  background: #03fcdb;
+  border: 2px solid #ffffff;
+}
+
+@media (max-width: 1100px) and (min-width: 641px) {
+  .portfolio .p-nav-actions {
+    gap: 16px;
+  }
+  .portfolio .p-theme-toggle {
+    min-width: 44px;
+    padding: 10px;
+  }
+  .portfolio .p-theme-toggle > span {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .portfolio .p-nav-actions {
+    gap: 8px;
+    margin-left: auto;
+  }
+}

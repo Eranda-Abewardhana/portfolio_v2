@@ -3,15 +3,17 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { useTheme } from "./ThemeProvider";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 import {
   motion,
-  useReducedMotion,
   useScroll,
   useTransform,
 } from "framer-motion";
 
 /** Native scrolling acts as a reversible camera timeline; no wheel interception. */
 export default function ScrollStory() {
+  const { theme } = useTheme();
   const track = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
   const { scrollYProgress: progress } = useScroll({
@@ -34,7 +36,9 @@ export default function ScrollStory() {
   const background = useTransform(
     progress,
     [0, 0.5, 1],
-    ["#17120f", "#101b19", "#11100e"],
+    theme === "dark"
+      ? ["#17120f", "#101b19", "#11100e"]
+      : ["#f5fafa", "#e2fff9", "#ffffff"],
   );
   const warmLight = useTransform(
     progress,

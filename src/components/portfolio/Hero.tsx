@@ -4,7 +4,6 @@ import { useRef } from "react";
 import Image from "next/image";
 import {
   motion,
-  useReducedMotion,
   useScroll,
   useTransform,
 } from "framer-motion";
@@ -16,6 +15,7 @@ import {
   Linkedin,
 } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolioProfile";
+import { useReducedMotion } from "@/lib/useReducedMotion";
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);

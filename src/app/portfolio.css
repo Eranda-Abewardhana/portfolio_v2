@@ -1,11 +1,5 @@
 /* The new portfolio is scoped so the original /legacy presentation is preserved. */
 .portfolio {
-  --ink: #11100e;
-  --panel: #191713;
-  --ivory: #f0ede6;
-  --copper: #cf9a72;
-  --muted: #aaa59c;
-  --rule: rgba(240, 237, 230, 0.15);
   background: var(--ink);
   color: var(--ivory);
   font-family: var(--font-body), sans-serif;
@@ -82,7 +76,7 @@ html {
   -webkit-text-stroke: 1px var(--ivory);
 }
 .portfolio .p-copper {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-muted {
   color: var(--muted);
@@ -105,7 +99,7 @@ html {
   margin-bottom: 28px;
 }
 .portfolio .p-section-label > span {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-section-heading {
   display: flex;
@@ -126,7 +120,7 @@ html {
 .portfolio .p-heading-arrow {
   width: 60px;
   height: 60px;
-  color: var(--copper);
+  color: var(--accent-text);
   margin-bottom: 5px;
 }
 .portfolio .p-scroll-progress {
@@ -153,11 +147,11 @@ html {
 .portfolio .p-status-dot {
   width: 6px;
   height: 6px;
-  background: #9eae83;
+  background: var(--status-color);
   border-radius: 50%;
   display: inline-block;
   flex: 0 0 6px;
-  box-shadow: 0 0 10px #9eae8326;
+  box-shadow: 0 0 10px var(--status-glow);
 }
 .portfolio .p-text-link {
   display: inline-flex;
@@ -220,7 +214,7 @@ html {
 }
 .portfolio .p-button-outline:hover {
   border-color: var(--copper);
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-icon-button {
   width: 40px;
@@ -236,7 +230,7 @@ html {
   flex-shrink: 0;
 }
 .portfolio .p-icon-button:hover {
-  color: var(--copper);
+  color: var(--accent-text);
   border-color: var(--copper);
 }
 .portfolio .p-tags {
@@ -290,7 +284,7 @@ html {
 }
 .portfolio .p-nav.is-scrolled {
   height: 78px;
-  background: #11100ef2;
+  background: var(--nav-surface);
   backdrop-filter: blur(18px);
   border-bottom-color: var(--rule);
 }
@@ -312,7 +306,7 @@ html {
   margin-top: -10px;
 }
 .portfolio .p-monogram > span {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-desktop-nav {
   display: flex;
@@ -323,7 +317,7 @@ html {
 }
 .portfolio .p-desktop-nav a {
   font-size: 12px;
-  color: #c9c4bb;
+  color: var(--nav-text);
   position: relative;
   padding: 8px 0;
 }
@@ -359,7 +353,7 @@ html {
   font-size: 12px;
 }
 .portfolio .p-nav-contact:hover {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-menu-toggle {
   display: none;
@@ -369,7 +363,7 @@ html {
 .portfolio .p-hero {
   position: relative;
   padding-top: 133px;
-  background: radial-gradient(ellipse at 76% 40%, #61412c20, transparent 48%);
+  background: radial-gradient(ellipse at 76% 40%, var(--hero-glow), transparent 48%);
 }
 .portfolio .p-hero::before {
   content: "";
@@ -390,7 +384,7 @@ html {
   font-size: 9px;
 }
 .portfolio .p-cross {
-  color: var(--copper);
+  color: var(--accent-text);
   margin: 0 12px;
   font-size: 14px;
 }
@@ -465,7 +459,7 @@ html {
   color: var(--muted);
 }
 .portfolio .p-hero-socials a:hover {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-hero-socials .p-micro {
   font-size: 8px;
@@ -494,7 +488,7 @@ html {
 .portfolio .p-portrait img {
   object-fit: cover;
   object-position: center 22%;
-  filter: grayscale(0.12) saturate(1.05) sepia(0.04) brightness(0.9) contrast(1.05);
+  filter: var(--portrait-filter);
 }
 .portfolio .p-portrait-halo {
   position: absolute;
@@ -506,14 +500,14 @@ html {
   border-radius: 50%;
   background: radial-gradient(
     ellipse,
-    #bd774b38 0%,
-    #8150350a 55%,
+    var(--portrait-glow) 0%,
+    var(--portrait-glow-soft) 55%,
     transparent 72%
   );
 }
 .portfolio .p-portrait-orbit {
   position: absolute;
-  border: 1px solid #cf9a7223;
+  border: 1px solid color-mix(in srgb, var(--copper) 13.7%, transparent);
   border-radius: 50%;
   width: 435px;
   height: 435px;
@@ -527,7 +521,7 @@ html {
   height: 475px;
   top: 25px;
   border-style: dashed;
-  border-color: #cf9a7212;
+  border-color: color-mix(in srgb, var(--copper) 7.1%, transparent);
 }
 .portfolio .p-orbit-one::after {
   position: absolute;
@@ -538,7 +532,7 @@ html {
   border-radius: 50%;
   right: 60px;
   top: 63px;
-  box-shadow: 0 0 20px #cf9a7277;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--copper) 46.7%, transparent);
 }
 .portfolio .p-portrait-word {
   position: absolute;
@@ -546,7 +540,7 @@ html {
     600 190px/0.9 var(--font-display),
     sans-serif;
   color: transparent;
-  -webkit-text-stroke: 1px #cf9a7230;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--copper) 18.8%, transparent);
   top: 180px;
   left: -40px;
   letter-spacing: 0.01em;
@@ -575,7 +569,7 @@ html {
   letter-spacing: 0.05em;
 }
 .portfolio .p-small-cross {
-  color: var(--copper);
+  color: var(--accent-text);
   font-size: 30px;
   font-weight: 400;
 }
@@ -617,7 +611,7 @@ html {
   letter-spacing: -0.025em;
 }
 .portfolio .p-hero-stat > strong > span {
-  color: var(--copper);
+  color: var(--accent-text);
   font-size: 31px;
 }
 .portfolio .p-hero-stat > span,
@@ -640,7 +634,7 @@ html {
 }
 .portfolio .p-marquee {
   border-block: 1px solid var(--rule);
-  background: #1a1713;
+  background: var(--marquee-surface);
   overflow: hidden;
   padding: 15px 0;
   position: relative;
@@ -655,10 +649,10 @@ html {
   justify-content: center;
   width: 30px;
   height: 30px;
-  background: #1a1713;
+  background: var(--marquee-surface);
   border: 1px solid var(--rule);
   border-radius: 50%;
-  box-shadow: 0 0 15px 15px #1a1713;
+  box-shadow: 0 0 15px 15px var(--marquee-surface);
 }
 .portfolio .p-marquee > div {
   display: flex;
@@ -675,7 +669,7 @@ html {
 .portfolio .p-marquee i {
   font-style: normal;
   font-size: 18px;
-  color: var(--copper);
+  color: var(--accent-text);
   vertical-align: middle;
   margin: 0 48px;
 }
@@ -698,7 +692,7 @@ html {
   display: block;
   width: 100%;
   height: 360px;
-  background: #26221c;
+  background: var(--cover-surface);
   position: relative;
   overflow: hidden;
   text-align: left;
@@ -711,12 +705,12 @@ html {
   transition:
     transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
     filter 0.8s;
-  filter: saturate(0.95) brightness(0.9);
+  filter: var(--project-filter);
 }
 .portfolio .p-project-1 .p-project-cover img {
   object-fit: contain;
   padding: 20px 6% 22px 25%;
-  background: #1b211e;
+  background: var(--featured-surface);
   transform: perspective(1200px) rotateY(-8deg) rotateX(2deg) scale(0.96);
   transform-origin: right;
 }
@@ -742,17 +736,17 @@ html {
 .portfolio .p-project-1 .p-project-cover-shade {
   background: linear-gradient(
     90deg,
-    #101f19 0%,
-    #101f19e0 13%,
-    #101f1970 35%,
-    #101f1900 70%
+    rgb(var(--featured-shade-rgb)) 0%,
+    rgb(var(--featured-shade-rgb) / 88%) 13%,
+    rgb(var(--featured-shade-rgb) / 44%) 35%,
+    rgb(var(--featured-shade-rgb) / 0%) 70%
   );
 }
 .portfolio .p-project-index {
   position: absolute;
   top: 23px;
   left: 25px;
-  color: #f0ede6c7;
+  color: currentColor;
   font-size: 9px;
 }
 .portfolio .p-project-video-label {
@@ -770,12 +764,12 @@ html {
   bottom: 22px;
   height: 50px;
   width: 50px;
-  border: 1px solid #f0ede65c;
+  border: 1px solid color-mix(in srgb, currentColor 36%, transparent);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #11100e26;
+  background: var(--cover-control-surface);
   backdrop-filter: blur(10px);
   transition:
     background 0.35s,
@@ -797,7 +791,7 @@ html {
 }
 .portfolio .p-project-feature-label > .p-micro {
   font-size: 9px;
-  color: #cfccbb;
+  color: var(--featured-label);
 }
 .portfolio .p-project-feature-label > .p-display {
   font-size: 125px;
@@ -837,7 +831,7 @@ html {
   text-align: left;
 }
 .portfolio .p-project-meta h3 button:hover {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-project-meta > div > p:last-child {
   font-size: 12px;
@@ -851,7 +845,7 @@ html {
 .portfolio .p-project-tech {
   display: flex;
   gap: 16px;
-  color: #b0aa9f;
+  color: var(--tech-text);
   margin-top: 15px;
   flex-wrap: wrap;
   font-size: 9px;
@@ -859,7 +853,7 @@ html {
 .portfolio .p-project-tech > span:not(:last-child)::after {
   content: "/";
   margin-left: 16px;
-  color: #6e665a;
+  color: var(--quiet-text);
 }
 .portfolio .p-work-footer {
   display: flex;
@@ -875,7 +869,7 @@ html {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 50% 70%, #48392c, transparent 70%), #24201b;
+    radial-gradient(ellipse at 50% 70%, var(--audio-glow), transparent 70%), var(--audio-surface);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -898,7 +892,7 @@ html {
   display: flex;
   gap: 24px;
   font-size: 7px;
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-waveform {
   display: flex;
@@ -928,18 +922,18 @@ html {
     600 64px/0.9 var(--font-display),
     sans-serif;
   letter-spacing: -0.015em;
-  text-shadow: 0 3px 20px #211c15;
+  text-shadow: 0 3px 20px var(--audio-shadow);
 }
 .portfolio .p-audio-title span {
   color: transparent;
-  -webkit-text-stroke: 1px var(--copper);
+  -webkit-text-stroke: 1px var(--outline-accent);
 }
 
 /* Accessible, native project dialog */
 .portfolio .p-project-dialog {
   color: var(--ivory);
-  background: #191713;
-  border: 1px solid #cf9a724f;
+  background: var(--panel);
+  border: 1px solid color-mix(in srgb, var(--copper) 31.0%, transparent);
   padding: 0;
   width: min(850px, calc(100% - 32px));
   max-height: 88dvh;
@@ -950,7 +944,7 @@ html {
   scrollbar-color: var(--copper) var(--ink);
 }
 .portfolio .p-project-dialog::backdrop {
-  background: #080705da;
+  background: var(--dialog-backdrop);
   backdrop-filter: blur(10px);
 }
 .portfolio .p-project-dialog[open] {
@@ -975,7 +969,7 @@ html {
 .portfolio .p-dialog-top .p-icon-button {
   position: sticky;
   top: 0;
-  background: #191713;
+  background: var(--panel);
 }
 .portfolio .p-dialog-content > .p-section-label {
   margin-bottom: 12px;
@@ -1002,7 +996,7 @@ html {
   margin-bottom: 25px;
 }
 .portfolio .p-dialog-section h3 {
-  color: var(--copper);
+  color: var(--accent-text);
   font:
     10px/1.5 "Courier New",
     monospace;
@@ -1012,7 +1006,7 @@ html {
 .portfolio .p-dialog-section p,
 .portfolio .p-dialog-section li {
   font-size: 13px;
-  color: #c4beb4;
+  color: var(--body-copy);
   line-height: 1.9;
 }
 .portfolio .p-dialog-section ul {
@@ -1024,7 +1018,7 @@ html {
   margin-bottom: 9px;
 }
 .portfolio .p-dialog-section li::marker {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-dialog-gallery {
   display: grid;
@@ -1049,7 +1043,7 @@ html {
 
 /* The person */
 .portfolio .p-about-band {
-  background: #1b1915;
+  background: var(--band-surface);
   border-block: 1px solid var(--rule);
 }
 .portfolio .p-about-grid {
@@ -1107,7 +1101,7 @@ html {
   font-size: 29px;
   font-style: italic;
   transform: rotate(-9deg);
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-about-copy h2 {
   font-size: clamp(75px, 7.5vw, 110px);
@@ -1128,7 +1122,7 @@ html {
   margin-bottom: 22px;
 }
 .portfolio .p-about-lead > span {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-about-copy .p-text-link {
   margin-top: 12px;
@@ -1140,7 +1134,7 @@ html {
   border-bottom: 1px solid var(--rule);
   padding-bottom: 18px;
   margin-bottom: 20px;
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-mini-heading h3 {
   font:
@@ -1192,7 +1186,7 @@ html {
 .portfolio .p-detail-plus {
   font-size: 23px;
   font-weight: 400;
-  color: var(--copper);
+  color: var(--accent-text);
   transition: transform 0.3s;
 }
 .portfolio .p-award-detail[open] .p-detail-plus {
@@ -1238,7 +1232,7 @@ html {
   position: relative;
   aspect-ratio: 1.05;
   border: 1px solid var(--rule);
-  background: radial-gradient(ellipse at 50% 50%, #251b1240, #15131040);
+  background: radial-gradient(ellipse at 50% 50%, var(--neural-glow), var(--neural-surface));
 }
 .portfolio .p-neural-panel::before,
 .portfolio .p-neural-panel::after {
@@ -1247,7 +1241,7 @@ html {
   font:
     16px/1 "Courier New",
     monospace;
-  color: var(--copper);
+  color: var(--accent-text);
   z-index: 1;
 }
 .portfolio .p-neural-panel::before {
@@ -1289,7 +1283,7 @@ html {
   padding: 6px;
 }
 .portfolio .p-neural-top button:hover {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-neural-center {
   position: absolute;
@@ -1304,14 +1298,14 @@ html {
 }
 .portfolio .p-neural-label {
   position: absolute;
-  color: var(--copper);
+  color: var(--accent-text);
   font-size: 8px;
   display: flex;
   align-items: center;
   gap: 8px;
   pointer-events: none;
   padding: 6px;
-  background: #11100eb0;
+  background: var(--label-surface);
 }
 .portfolio .p-neural-label i {
   width: 3px;
@@ -1338,12 +1332,12 @@ html {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  color: #9a9183;
+  color: var(--muted);
   font-size: 7px;
   pointer-events: none;
 }
 .portfolio .p-neural-fallback {
-  border: 1px solid #cf9a7233;
+  border: 1px solid color-mix(in srgb, var(--copper) 20.0%, transparent);
   width: 60%;
   aspect-ratio: 1;
   border-radius: 50%;
@@ -1381,7 +1375,7 @@ html {
 }
 .portfolio .p-discipline.is-active h3 button > svg,
 .portfolio .p-discipline.is-active h3 button > .p-micro {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-discipline > div {
   padding: 20px 0 5px 32px;
@@ -1476,14 +1470,14 @@ html {
 }
 .portfolio .p-experience-title > span {
   font-size: 12px;
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-experience-location {
   color: var(--muted);
   margin-left: 6px;
 }
 .portfolio .p-experience-toggle {
-  color: var(--copper);
+  color: var(--accent-text);
   transition: transform 0.3s;
 }
 .portfolio .p-experience-item[open] .p-experience-toggle {
@@ -1507,12 +1501,12 @@ html {
   line-height: 1.9;
 }
 .portfolio .p-experience-details li::marker {
-  color: #7f6f5b;
+  color: var(--muted);
 }
 
 /* Research, deliberately diagrammatic rather than a fabricated screenshot. */
 .portfolio .p-research-band {
-  background: #1b1915;
+  background: var(--band-surface);
   border-block: 1px solid var(--rule);
 }
 .portfolio .p-research-grid {
@@ -1571,7 +1565,7 @@ html {
 }
 .portfolio .p-research-method .p-micro {
   font-size: 8px;
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-research-method p {
   margin-top: 6px;
@@ -1583,7 +1577,7 @@ html {
 
 /* Contact: the last frame, with a direct, working next step. */
 .portfolio .p-contact {
-  background: radial-gradient(ellipse at 80% 80%, #5d382814, transparent 60%);
+  background: radial-gradient(ellipse at 80% 80%, var(--contact-glow), transparent 60%);
   padding-bottom: 70px;
 }
 .portfolio .p-contact-top {
@@ -1615,10 +1609,10 @@ html {
   transition: color 0.4s;
 }
 .portfolio .p-contact-heading-link:hover h2 {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-contact-heading-link:hover .p-outline {
-  -webkit-text-stroke-color: var(--copper);
+  -webkit-text-stroke-color: var(--accent-text);
 }
 .portfolio .p-contact-break {
   display: none;
@@ -1666,11 +1660,11 @@ html {
   letter-spacing: -0.04em;
 }
 .portfolio .p-contact-email > a:hover {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-copy-status {
   font-size: 11px;
-  color: var(--copper);
+  color: var(--accent-text);
   min-height: 20px;
   margin-top: 10px;
 }
@@ -1691,7 +1685,7 @@ html {
   border-bottom: 1px solid var(--rule);
 }
 .portfolio .p-contact-links a:hover {
-  color: var(--copper);
+  color: var(--accent-text);
   border-color: var(--copper);
 }
 .portfolio .p-footer {
@@ -1725,7 +1719,7 @@ html {
   margin-left: 10px;
 }
 .portfolio .p-back-top:hover {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 
 /* Tablet */
@@ -2104,10 +2098,10 @@ html {
     top: 100%;
     left: 0;
     right: 0;
-    background: #191713fc;
+    background: var(--mobile-surface);
     padding: 10px 5% 25px;
     border-bottom: 1px solid var(--rule);
-    box-shadow: 0 20px 40px #0006;
+    box-shadow: 0 20px 40px var(--menu-shadow);
   }
   .portfolio .p-mobile-nav a {
     display: flex;
@@ -2124,11 +2118,11 @@ html {
     font:
       9px "Courier New",
       monospace;
-    color: var(--copper);
+    color: var(--accent-text);
   }
   .portfolio .p-mobile-nav a > svg {
     margin-left: auto;
-    color: var(--copper);
+    color: var(--accent-text);
   }
   .portfolio .p-hero {
     padding-top: 101px;

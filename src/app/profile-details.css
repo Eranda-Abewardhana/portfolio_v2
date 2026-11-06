@@ -14,7 +14,7 @@
   gap: 65px;
   padding: 55px;
   background:
-    radial-gradient(ellipse at 72% 35%, #6e58312b, transparent 70%), #211f19;
+    radial-gradient(ellipse at 72% 35%, var(--product-glow), transparent 70%), var(--product-surface);
   text-align: left;
 }
 .portfolio .p-doccraft-copy {
@@ -33,10 +33,10 @@
   letter-spacing: -0.03em;
 }
 .portfolio .p-doccraft-copy > .p-display > span {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-doccraft-copy > p {
-  color: #d0c8ba;
+  color: var(--body-copy);
   font-size: 18px;
   line-height: 1.5;
   margin-top: 17px;
@@ -56,7 +56,7 @@
   margin-bottom: 15px;
 }
 .portfolio .p-doccraft-system-label > span:first-child {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-doccraft-service-grid {
   display: grid;
@@ -66,8 +66,8 @@
 .portfolio .p-doccraft-service-grid > div {
   min-height: 90px;
   padding: 17px 10px;
-  border: 1px solid #cf9a7238;
-  background: #f0ede603;
+  border: 1px solid color-mix(in srgb, var(--copper) 22.0%, transparent);
+  background: var(--tile-surface);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -79,11 +79,11 @@
     background 0.4s;
 }
 .portfolio .p-doccraft-service-grid svg {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-project-cover:hover .p-doccraft-service-grid > div {
-  border-color: #cf9a7270;
-  background: #cf9a7209;
+  border-color: color-mix(in srgb, var(--copper) 43.9%, transparent);
+  background: color-mix(in srgb, var(--copper) 3.5%, transparent);
 }
 .portfolio .p-doccraft-integrations {
   display: flex;
@@ -120,7 +120,7 @@
   margin-right: 3px;
 }
 .portfolio .p-doccraft-plan i {
-  color: var(--copper);
+  color: var(--accent-text);
   font-style: normal;
   margin-inline: 9px;
 }
@@ -156,7 +156,7 @@
   padding-top: 30px;
 }
 .portfolio .p-profile-notes h3 {
-  color: var(--copper);
+  color: var(--accent-text);
   font-size: 9px;
   margin-bottom: 12px;
 }

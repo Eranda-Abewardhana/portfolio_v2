@@ -34,7 +34,7 @@
   height: 100svh;
   min-height: 600px;
   overflow: hidden;
-  background: #17120f;
+  background: var(--story-surface);
   perspective: 1200px;
 }
 .portfolio .p-story-topline {
@@ -55,11 +55,11 @@
   align-items: center;
   gap: 10px;
   padding-block: 8px;
-  border-bottom: 1px solid #cf9a7266;
+  border-bottom: 1px solid color-mix(in srgb, var(--copper) 40.0%, transparent);
   color: var(--ivory);
 }
 .portfolio .p-story-topline a:hover {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 .portfolio .p-story-light {
   position: absolute;
@@ -67,10 +67,10 @@
   pointer-events: none;
 }
 .portfolio .p-story-light-warm {
-  background: radial-gradient(ellipse at 63% 39%, #b8763d66, transparent 60%);
+  background: radial-gradient(ellipse at 63% 39%, var(--story-warm-light), transparent 60%);
 }
 .portfolio .p-story-light-cool {
-  background: radial-gradient(ellipse at 32% 39%, #6baf9b66, transparent 60%);
+  background: radial-gradient(ellipse at 32% 39%, var(--story-cool-light), transparent 60%);
 }
 .portfolio .p-story-ghost {
   position: absolute;
@@ -83,7 +83,7 @@
     sans-serif;
   letter-spacing: 0.015em;
   color: transparent;
-  -webkit-text-stroke: 1px #cf9a7255;
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--copper) 33.3%, transparent);
   pointer-events: none;
 }
 .portfolio .p-story-subject {
@@ -103,7 +103,7 @@
 .portfolio .p-story-subject img {
   object-fit: contain;
   object-position: center;
-  filter: grayscale(0.1) saturate(1.08) sepia(0.03) brightness(0.86) contrast(1.05);
+  filter: var(--story-image-filter);
 }
 .portfolio .p-story-vignette {
   position: absolute;
@@ -111,12 +111,12 @@
   background:
     linear-gradient(
       180deg,
-      #11100e80 0%,
+      rgb(var(--story-rgb) / 50%) 0%,
       transparent 25%,
       transparent 70%,
-      #11100ed6 100%
+      rgb(var(--story-rgb) / 84%) 100%
     ),
-    linear-gradient(90deg, transparent 0%, transparent 53%, #11100e66 100%);
+    linear-gradient(90deg, transparent 0%, transparent 53%, rgb(var(--story-rgb) / 40%) 100%);
   pointer-events: none;
 }
 .portfolio .p-story-copy {
@@ -128,22 +128,22 @@
   max-width: 70%;
 }
 .portfolio .p-story-copy > .p-micro {
-  color: var(--copper);
+  color: var(--accent-text);
   font-size: 9px;
   letter-spacing: 0.1em;
   margin-bottom: 26px;
 }
 .portfolio .p-story-copy > .p-display {
   font-size: clamp(70px, 9.2vw, 148px);
-  text-shadow: 0 4px 45px #11100e35;
+  text-shadow: 0 4px 45px rgb(var(--story-rgb) / 21%);
 }
 .portfolio .p-story-copy > span {
   display: block;
-  color: #c2bbb0;
+  color: var(--story-copy);
   font-size: 13px;
   line-height: 1.8;
   margin-top: 25px;
-  text-shadow: 0 2px 12px #000;
+  text-shadow: 0 2px 12px var(--story-text-shadow);
 }
 .portfolio .p-story-copy-two {
   top: 38%;
@@ -182,7 +182,7 @@
 .portfolio .p-story-depth-track {
   height: 130px;
   width: 1px;
-  background: #cf9a7233;
+  background: color-mix(in srgb, var(--copper) 20.0%, transparent);
 }
 .portfolio .p-story-depth-track > i {
   display: block;
@@ -213,7 +213,7 @@
   font-size: 8px;
 }
 .portfolio .p-story-bottom > svg {
-  color: var(--copper);
+  color: var(--accent-text);
 }
 
 @media (max-width: 900px) {
