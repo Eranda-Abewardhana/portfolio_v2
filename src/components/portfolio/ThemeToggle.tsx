@@ -15,8 +15,14 @@ export default function ThemeToggle() {
       aria-label={label}
       title={label}
     >
-      {theme === "light" ? <Sun size={16} /> : <Moon size={16} />}
-      <span>{theme === "light" ? "Light" : "Dark"}</span>
+      <span className="p-theme-track" aria-hidden="true">
+        <span className="p-theme-thumb" />
+        <Sun className="p-theme-icon p-theme-icon-light" size={16} strokeWidth={1.8} />
+        <Moon className="p-theme-icon p-theme-icon-dark" size={16} strokeWidth={1.8} />
+      </span>
+      <span className="p-theme-label" aria-hidden="true">
+        {theme === "light" ? "Light" : "Dark"}
+      </span>
     </button>
   );
 }

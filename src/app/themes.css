@@ -123,21 +123,64 @@ body:has(.portfolio) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  min-width: 88px;
+  gap: 9px;
   min-height: 44px;
-  padding: 9px 13px;
-  border: 1px solid var(--rule);
-  border-radius: 30px;
-  background: var(--ink);
+  padding: 4px 0;
+  border-radius: 999px;
   color: var(--ivory);
-  font: 11px/1.2 "Courier New", monospace;
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  font: 500 12px/1 var(--font-body), sans-serif;
+  letter-spacing: -0.01em;
 }
-.portfolio .p-theme-toggle:hover {
-  background: var(--copper);
+.portfolio .p-theme-track {
+  position: relative;
+  display: block;
+  flex: 0 0 72px;
+  width: 72px;
+  height: 36px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--panel);
+  transition: border-color 0.2s;
+}
+.portfolio .p-theme-thumb {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: 28px;
+  border-radius: 50%;
+  background: var(--ivory);
+  box-shadow: 0 2px 5px #0000001a;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.2s;
+}
+.portfolio .p-theme-icon {
+  position: absolute;
+  top: 9px;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.portfolio .p-theme-icon-light {
+  left: 9px;
+  color: var(--ink);
+}
+.portfolio .p-theme-icon-dark {
+  right: 9px;
+}
+:root[data-theme="dark"] .portfolio .p-theme-thumb {
+  transform: translateX(36px);
+}
+:root[data-theme="dark"] .portfolio .p-theme-icon-light {
+  color: var(--muted);
+}
+:root[data-theme="dark"] .portfolio .p-theme-icon-dark {
+  color: var(--ink);
+}
+.portfolio .p-theme-toggle:hover .p-theme-track {
   border-color: var(--copper);
-  color: var(--on-accent);
+}
+.portfolio .p-theme-label {
+  width: 32px;
+  text-align: left;
 }
 .portfolio .p-button-light:hover {
   color: var(--on-accent);
@@ -185,11 +228,9 @@ body:has(.portfolio) {
   .portfolio .p-nav-actions {
     gap: 16px;
   }
-  .portfolio .p-theme-toggle {
-    min-width: 44px;
-    padding: 10px;
-  }
-  .portfolio .p-theme-toggle > span {
+}
+@media (max-width: 1100px) {
+  .portfolio .p-theme-label {
     display: none;
   }
 }
