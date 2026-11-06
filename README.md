@@ -6,6 +6,8 @@ Light mode is the default, with white, slate, and deep blue (`#1d4ed8`). The nav
 
 Visitors can download the latest CV from the introduction or contact section. Replace `public/cv/Eranda_Abewardhana_AI_CV.pdf` to update the download.
 
+GSAP and ScrollTrigger sequence the introduction, reveal projects and sections on scroll, and add subtle desktop button movement. Reduced-motion preferences disable these effects. Framer Motion continues to drive the portrait and scroll-camera zoom.
+
 Run `npm install` and `npm run dev` to preview locally. Run `npm run build` and `npm start` for production. For a custom domain, set `NEXT_PUBLIC_SITE_URL` to your preferred public origin for canonical and social metadata.
 
 For Vercel, the production URL is detected automatically. See [SEO setup and Google Search Console verification](docs/SEO.md) and [.env.example](.env.example) for deployment settings and indexing steps.

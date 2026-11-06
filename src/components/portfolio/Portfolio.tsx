@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, MotionConfig, useScroll } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Pause, Play } from "lucide-react";
 import Navigation from "./Navigation";
 import Hero from "./Hero";
@@ -11,30 +11,13 @@ import About from "./About";
 import Expertise from "./Expertise";
 import Journey from "./Journey";
 import Contact from "./Contact";
+import { usePortfolioAnimations } from "@/lib/usePortfolioAnimations";
 
 export default function Portfolio() {
   const { scrollYProgress } = useScroll();
   const root = useRef<HTMLDivElement>(null);
   const [marqueePaused, setMarqueePaused] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("p-entered");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.08 },
-    );
-    root.current
-      ?.querySelectorAll(
-        ".p-section-heading, .p-project, .p-about-copy, .p-about-photo, .p-research-intro, .p-research-copy, .p-contact-heading-link",
-      )
-      .forEach((element) => observer.observe(element));
-    return () => observer.disconnect();
-  }, []);
+  usePortfolioAnimations(root);
   return (
     <MotionConfig reducedMotion="user">
       <div ref={root} className="portfolio">

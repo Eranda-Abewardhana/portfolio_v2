@@ -52,18 +52,18 @@ export default function Hero() {
       </div>
       <div className="p-wrap p-hero-grid">
         <div className="p-hero-copy">
-          <motion.div
-            initial={false}
-            animate={{ opacity: 1 }}
-            className="p-hero-eyebrow"
-          >
+          <div className="p-hero-eyebrow">
             <span className="p-status-dot" />
             <span>AI / BACKEND / PLATFORM ENGINEERING</span>
-          </motion.div>
+          </div>
           <p className="p-display p-hero-heading">
-            <span>BUILDING</span>
-            <span className="p-outline">
-              INTELLIGENCE<span className="p-copper">.</span>
+            <span className="p-hero-title-line">
+              <span className="p-hero-title-word">BUILDING</span>
+            </span>
+            <span className="p-hero-title-line">
+              <span className="p-hero-title-word p-outline">
+                INTELLIGENCE<span className="p-copper">.</span>
+              </span>
             </span>
           </p>
           <div className="p-hero-intro">

@@ -246,24 +246,13 @@ html {
   padding: 5px 9px;
   border: 1px solid var(--rule);
 }
-.portfolio .p-entered {
-  animation: p-section-enter 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-}
-@keyframes p-section-enter {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.portfolio .p-hero-copy {
-  animation: p-section-enter 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-}
 
 /* Navigation */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-portfolio-intro="pending"] .portfolio .p-hero {
+    visibility: hidden;
+  }
+}
 .portfolio .p-nav {
   position: fixed;
   top: 0;
@@ -415,6 +404,15 @@ html {
   z-index: 3;
 }
 .portfolio .p-hero-heading > span {
+  display: block;
+}
+.portfolio .p-hero-heading > .p-hero-title-line {
+  width: max-content;
+  overflow: hidden;
+  padding-block: 0.08em;
+  margin-block: -0.08em;
+}
+.portfolio .p-hero-title-word {
   display: block;
 }
 .portfolio .p-hero-heading > span + span {
