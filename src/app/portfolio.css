@@ -1688,6 +1688,9 @@ html {
   color: var(--accent-text);
   border-color: var(--copper);
 }
+.portfolio .p-contact-cv {
+  grid-column: 1 / -1;
+}
 .portfolio .p-footer {
   display: flex;
   align-items: center;

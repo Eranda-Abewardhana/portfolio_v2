@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, ArrowUp, Check, Copy } from "lucide-react";
+import { ArrowUpRight, ArrowUp, Check, Copy, Download } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolioProfile";
 
 export default function Contact() {
@@ -103,6 +103,10 @@ export default function Contact() {
               <a href={`tel:${PERSONAL_INFO.phone.replace(/\s/g, "")}`}>
                 {PERSONAL_INFO.phone}
                 <ArrowUpRight size={17} />
+              </a>
+              <a href={PERSONAL_INFO.cvUrl} download className="p-contact-cv">
+                Download CV (PDF)
+                <Download size={17} />
               </a>
             </div>
           </div>

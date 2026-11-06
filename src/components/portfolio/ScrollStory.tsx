@@ -38,7 +38,7 @@ export default function ScrollStory() {
     [0, 0.5, 1],
     theme === "dark"
       ? ["#17120f", "#101b19", "#11100e"]
-      : ["#f5fafa", "#e2fff9", "#ffffff"],
+      : ["#f4f7fc", "#e8efff", "#ffffff"],
   );
   const warmLight = useTransform(
     progress,

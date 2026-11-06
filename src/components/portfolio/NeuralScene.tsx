@@ -28,9 +28,9 @@ export default function NeuralScene({
     if (!element) return;
     const context = element.getContext("2d");
     if (!context) return;
-    const lineColor = theme === "light" ? "0, 0, 0" : "207, 154, 114";
-    const selectedColor = theme === "light" ? "0, 112, 99" : "247, 220, 183";
-    const glowColor = theme === "light" ? "3, 252, 219" : "170, 105, 61";
+    const lineColor = theme === "light" ? "15, 23, 42" : "207, 154, 114";
+    const selectedColor = theme === "light" ? "29, 78, 216" : "247, 220, 183";
+    const glowColor = theme === "light" ? "29, 78, 216" : "170, 105, 61";
     const motionPreference = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     );

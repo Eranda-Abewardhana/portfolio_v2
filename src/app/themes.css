@@ -1,4 +1,4 @@
-/* White, black, and mint are the default; dark mode keeps the original palette. */
+/* White, slate, and deep blue are the default; dark mode keeps its warm palette. */
 :root {
   color-scheme: light;
   background: #ffffff;
@@ -15,53 +15,52 @@ body:has(.portfolio) {
 }
 .portfolio {
   --ink: #ffffff;
-  --panel: #f5f8f7;
+  --panel: #f5f7fb;
   --ivory: #111111;
-  --copper: #03fcdb;
-  --muted: #56605e;
+  --copper: #1d4ed8;
+  --muted: #526078;
   --rule: #11111126;
-  /* Bright mint is for surfaces and details; text uses black for contrast. */
-  --accent-text: #111111;
-  --on-accent: #111111;
+  --accent-text: #1d4ed8;
+  --on-accent: #ffffff;
   --nav-surface: #fffffff2;
-  --nav-text: #3f4846;
-  --hero-glow: #03fcdb1a;
-  --portrait-glow: #03fcdb30;
-  --portrait-glow-soft: #03fcdb08;
+  --nav-text: #334155;
+  --hero-glow: #1d4ed80a;
+  --portrait-glow: #1d4ed81a;
+  --portrait-glow-soft: #1d4ed805;
   --portrait-filter: saturate(0.88) contrast(1.02);
   --project-filter: saturate(0.95) brightness(1);
-  --status-color: #03fcdb;
-  --status-glow: #03fcdb40;
-  --marquee-surface: #03fcdb;
-  --cover-surface: #f0f4f3;
-  --featured-surface: #eff7f5;
-  --featured-shade-rgb: 239 247 245;
-  --featured-label: #454f4d;
+  --status-color: #1d4ed8;
+  --status-glow: #1d4ed826;
+  --marquee-surface: #edf2fc;
+  --cover-surface: #eff3f9;
+  --featured-surface: #eef3fb;
+  --featured-shade-rgb: 238 243 251;
+  --featured-label: #475569;
   --cover-control-surface: #ffffffcc;
-  --tech-text: #56605e;
-  --quiet-text: #707875;
-  --audio-glow: #03fcdb38;
-  --audio-surface: #f1faf8;
+  --tech-text: #526078;
+  --quiet-text: #64748b;
+  --audio-glow: #1d4ed81f;
+  --audio-surface: #f1f5fc;
   --audio-shadow: #ffffffcc;
   --outline-accent: #111111;
-  --dialog-backdrop: #15232166;
-  --body-copy: #414947;
-  --band-surface: #f6f8f8;
-  --neural-glow: #03fcdb18;
+  --dialog-backdrop: #0f172a66;
+  --body-copy: #3e4c63;
+  --band-surface: #f6f8fc;
+  --neural-glow: #1d4ed812;
   --neural-surface: #ffffff40;
   --label-surface: #ffffffe6;
-  --contact-glow: #03fcdb18;
+  --contact-glow: #1d4ed80d;
   --mobile-surface: #fffffffc;
   --menu-shadow: #00000014;
-  --story-surface: #f5fafa;
-  --story-warm-light: #03fcdb40;
-  --story-cool-light: #03fcdb30;
+  --story-surface: #f4f7fc;
+  --story-warm-light: #1d4ed81f;
+  --story-cool-light: #1d4ed826;
   --story-rgb: 255 255 255;
-  --story-copy: #414947;
+  --story-copy: #3e4c63;
   --story-text-shadow: transparent;
   --story-image-filter: saturate(0.78) brightness(1.05) contrast(1.02);
-  --product-glow: #03fcdb26;
-  --product-surface: #f1faf8;
+  --product-glow: #1d4ed81a;
+  --product-surface: #f1f5fc;
   --tile-surface: #ffffffb3;
 }
 :root[data-theme="dark"] .portfolio {
@@ -167,18 +166,18 @@ body:has(.portfolio) {
   padding-left: 12px;
 }
 :root:not([data-theme="dark"]) .portfolio ::selection {
-  color: #111111;
-  background: #03fcdb;
+  color: #ffffff;
+  background: #1d4ed8;
 }
 :root:not([data-theme="dark"]) .portfolio :is(button, a, summary):focus-visible {
   outline-color: #111111;
-  box-shadow: 0 0 0 4px #03fcdb;
+  box-shadow: 0 0 0 4px #dbeafe;
 }
 :root:not([data-theme="dark"]):has(.portfolio)::-webkit-scrollbar-track {
   background: #ffffff;
 }
 :root:not([data-theme="dark"]):has(.portfolio)::-webkit-scrollbar-thumb {
-  background: #03fcdb;
+  background: #1d4ed8;
   border: 2px solid #ffffff;
 }
 

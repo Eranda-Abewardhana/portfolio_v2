@@ -10,7 +10,7 @@ import {
 import {
   ArrowDown,
   ArrowDownRight,
-  ArrowUpRight,
+  Download,
   Github,
   Linkedin,
 } from "lucide-react";
@@ -83,8 +83,13 @@ export default function Hero() {
             <a href="#work" className="p-button p-button-light">
               Explore my work <ArrowDownRight size={20} />
             </a>
-            <a href="#contact" className="p-text-link">
-              Let’s build something <ArrowUpRight size={17} />
+            <a
+              href={PERSONAL_INFO.cvUrl}
+              download
+              className="p-text-link"
+              aria-label="Download CV (PDF)"
+            >
+              Download CV <Download size={17} />
             </a>
           </div>
           <div className="p-hero-socials">
