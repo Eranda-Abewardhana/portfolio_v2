@@ -131,20 +131,14 @@ export default function About() {
               <div className="p-yathra-gallery">
                 {YATHRA_EVENT.photos.map((photo) => (
                   <figure key={photo.src}>
-                    <a
-                      href={photo.src}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`View full-size photo: ${photo.caption} (opens in a new tab)`}
-                    >
-                      <Image
-                        src={photo.src}
-                        alt={photo.alt}
-                        width={photo.width}
-                        height={photo.height}
-                        sizes="(max-width: 480px) 85vw, (max-width: 760px) 40vw, 23vw"
-                      />
-                    </a>
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      width={photo.width}
+                      height={photo.height}
+                      sizes="(max-width: 480px) 85vw, (max-width: 760px) 40vw, 23vw"
+                      draggable={false}
+                    />
                     <figcaption>{photo.caption}</figcaption>
                   </figure>
                 ))}

@@ -1050,9 +1050,6 @@ html {
 .portfolio .p-dialog-screenshots figure:first-child {
   grid-column: 1 / -1;
 }
-.portfolio .p-dialog-screenshots a {
-  display: block;
-}
 .portfolio .p-dialog-screenshots img {
   display: block;
   width: 100%;
@@ -1293,9 +1290,6 @@ html {
   align-items: start;
   gap: 16px;
   margin-top: 20px;
-}
-.portfolio .p-yathra-gallery a {
-  display: block;
 }
 .portfolio .p-yathra-gallery img {
   max-width: none;

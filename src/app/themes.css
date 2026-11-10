@@ -13,7 +13,7 @@ body:has(.portfolio) {
 :root[data-theme="dark"] body:has(.portfolio) {
   background: #11100e;
 }
-.portfolio {
+:root:not([data-theme="dark"]) .portfolio {
   --ink: #ffffff;
   --panel: #f5f7fb;
   --ivory: #111111;
@@ -216,12 +216,15 @@ body:has(.portfolio) {
   outline-color: #111111;
   box-shadow: 0 0 0 4px #dbeafe;
 }
-:root:not([data-theme="dark"]):has(.portfolio)::-webkit-scrollbar-track {
-  background: #ffffff;
+:root:not([data-theme="dark"]):has(.portfolio) {
+  --scrollbar-track: #ffffff;
+  --scrollbar-thumb: #1d4ed8;
+  --scrollbar-thumb-hover: #1e40af;
 }
-:root:not([data-theme="dark"]):has(.portfolio)::-webkit-scrollbar-thumb {
-  background: #1d4ed8;
-  border: 2px solid #ffffff;
+:root[data-theme="dark"]:has(.portfolio) {
+  --scrollbar-track: #11100e;
+  --scrollbar-thumb: #cf9a72;
+  --scrollbar-thumb-hover: #dfb18e;
 }
 
 @media (max-width: 1100px) and (min-width: 641px) {

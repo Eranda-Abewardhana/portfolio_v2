@@ -146,21 +146,15 @@ export function ProjectDialog({
             <div className="p-dialog-screenshots">
               {project.screenshots.map((screenshot) => (
                 <figure key={screenshot.src}>
-                  <a
-                    href={screenshot.src}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`View ${screenshot.caption.toLowerCase()} at full size (opens in a new tab)`}
-                  >
-                    <Image
-                      src={screenshot.src}
-                      alt={screenshot.alt}
-                      width={screenshot.width}
-                      height={screenshot.height}
-                      quality={90}
-                      sizes="(max-width: 640px) 90vw, 800px"
-                    />
-                  </a>
+                  <Image
+                    src={screenshot.src}
+                    alt={screenshot.alt}
+                    width={screenshot.width}
+                    height={screenshot.height}
+                    quality={90}
+                    sizes="(max-width: 640px) 90vw, 800px"
+                    draggable={false}
+                  />
                   <figcaption>{screenshot.caption}</figcaption>
                 </figure>
               ))}
