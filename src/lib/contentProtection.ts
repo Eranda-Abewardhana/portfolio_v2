@@ -1,4 +1,4 @@
-/** Discourage casual inspection and image saving; displayed assets remain public. */
+/** Discourage casual inspection and media saving; displayed assets remain public. */
 export function installContentProtection(document: Document) {
   const view = document.defaultView;
   if (!view) return () => {};
@@ -17,7 +17,7 @@ export function installContentProtection(document: Document) {
   function onDragStart(event: DragEvent) {
     if (
       event.target instanceof ElementConstructor &&
-      event.target.closest("img, picture")
+      event.target.closest("img, picture, video")
     ) {
       event.preventDefault();
     }

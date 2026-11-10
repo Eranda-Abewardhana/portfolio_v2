@@ -170,13 +170,16 @@ export function ProjectDialog({
           <div className="p-dialog-media">
             <video
               controls
+              controlsList="nodownload"
+              draggable={false}
+              onContextMenu={(event) => event.preventDefault()}
               playsInline
               preload="metadata"
               poster={presentation?.cover}
               aria-label={`${presentation?.name || project.title} project demonstration`}
             >
               <source src={project.videoSrc} type="video/mp4" />
-              <a href={project.videoSrc}>Download the project demonstration</a>
+              Your browser does not support embedded video playback.
             </video>
           </div>
         )}

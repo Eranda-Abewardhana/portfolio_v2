@@ -133,6 +133,9 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   <video
                     src={project.videoSrc}
                     controls
+                    controlsList="nodownload"
+                    draggable={false}
+                    onContextMenu={(event) => event.preventDefault()}
                     playsInline
                     className="w-full max-h-[440px] rounded-xl object-contain bg-black"
                     poster={project.image}

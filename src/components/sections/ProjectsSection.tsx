@@ -134,6 +134,9 @@ function ProjectCardCarousel({ project }: { project: Project }) {
                 <video
                   src={currentSlide.src}
                   controls
+                  controlsList="nodownload"
+                  draggable={false}
+                  onContextMenu={(event) => event.preventDefault()}
                   playsInline
                   className="w-full h-full object-contain bg-black"
                   poster={project.image}
