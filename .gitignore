@@ -31,3 +31,7 @@ next-env.d.ts
 *.pem
 .vscode/
 .idea/
+
+# Generated encrypted video assets and server-only playback keys
+/public/_media/
+/src/lib/generated/video-manifest.server.json

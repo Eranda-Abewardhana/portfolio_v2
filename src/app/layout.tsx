@@ -9,6 +9,7 @@ import "./portfolio.css";
 import "./scroll-effects.css";
 import "./profile-details.css";
 import "./themes.css";
+import "./media.css";
 
 const bodyFont = localFont({
   src: [

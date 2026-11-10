@@ -4,6 +4,7 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Github, CheckCircle2, Video } from 'lucide-react';
 import { Project } from '@/data/portfolioData';
+import EncryptedVideo from './EncryptedVideo';
 
 interface ProjectModalProps {
   project: Project | null;
@@ -123,20 +124,16 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             </div>
 
             {/* Native MP4 Video Player */}
-            {project.videoSrc && (
+            {project.videoId && (
               <div className="pt-2">
                 <h3 className="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider mb-3 flex items-center gap-2">
                   <Video className="w-4 h-4 text-amber-400" />
-                  Native High-Quality Video Demonstration
+                  Video Demonstration
                 </h3>
                 <div className="w-full rounded-2xl overflow-hidden border border-amber-500/30 bg-black p-2 flex justify-center">
-                  <video
-                    src={project.videoSrc}
-                    controls
-                    controlsList="nodownload"
-                    draggable={false}
-                    onContextMenu={(event) => event.preventDefault()}
-                    playsInline
+                  <EncryptedVideo
+                    videoId={project.videoId}
+                    label={`${project.title} project demonstration`}
                     className="w-full max-h-[440px] rounded-xl object-contain bg-black"
                     poster={project.image}
                   />

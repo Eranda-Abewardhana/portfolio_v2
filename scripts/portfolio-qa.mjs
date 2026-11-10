@@ -111,6 +111,7 @@ try {
     );
     assert.equal(focusedInside, true);
     if (["Yukti", "YouFIRA"].includes(project)) {
+      await dialog.getByRole("button", { name: `Play ${project} project demonstration` }).click();
       await page.waitForFunction(
         () => document.querySelector("dialog video").readyState >= 1,
       );
@@ -187,9 +188,10 @@ try {
   await secondRole.locator("summary").click();
   assert.equal(await secondRole.getAttribute("open"), "");
   await secondRole.locator("summary").click();
-  await page.locator(".p-award-detail summary").click();
-  assert.equal(await page.locator(".p-award-expanded img").isVisible(), true);
-  await page.locator(".p-award-detail summary").click();
+  const award = page.locator(".p-award-detail:not(.p-yathra-detail)");
+  await award.locator("summary").click();
+  assert.equal(await award.locator(".p-award-expanded img").isVisible(), true);
+  await award.locator("summary").click();
   report.checks.push("Experience and award disclosures");
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.getByRole("button", { name: "Copy email address" }).click();

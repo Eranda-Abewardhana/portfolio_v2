@@ -7,6 +7,13 @@ const nextConfig = {
   headers() {
     return [
       {
+        source: "/_media/:path*",
+        headers: [
+          { key: "Content-Type", value: "application/octet-stream" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+        ],
+      },
+      {
         source: "/cv/Eranda_Abewardhana_AI_CV.pdf",
         headers: [
           {

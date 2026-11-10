@@ -7,6 +7,7 @@ import { PROJECTS, PERSONAL_INFO, type Project } from "@/data/portfolioProfile";
 import SectionHeading from "./SectionHeading";
 import ScrollZoom from "./ScrollZoom";
 import DocCraftVisual from "./DocCraftVisual";
+import EncryptedVideo from "@/components/ui/EncryptedVideo";
 
 const projectPresentation: Record<
   string,
@@ -166,21 +167,13 @@ export function ProjectDialog({
             <DocCraftVisual />
           </div>
         )}
-        {project.videoSrc && (
+        {project.videoId && (
           <div className="p-dialog-media">
-            <video
-              controls
-              controlsList="nodownload"
-              draggable={false}
-              onContextMenu={(event) => event.preventDefault()}
-              playsInline
-              preload="metadata"
+            <EncryptedVideo
+              videoId={project.videoId}
               poster={presentation?.cover}
-              aria-label={`${presentation?.name || project.title} project demonstration`}
-            >
-              <source src={project.videoSrc} type="video/mp4" />
-              Your browser does not support embedded video playback.
-            </video>
+              label={`${presentation?.name || project.title} project demonstration`}
+            />
           </div>
         )}
         <div className="p-dialog-section">
@@ -342,7 +335,7 @@ export default function Projects() {
                 <span className="p-project-index p-micro">
                   0{index + 1} / {project.year}
                 </span>
-                {project.videoSrc && (
+                {project.videoId && (
                   <span className="p-project-video-label p-micro">
                     <Play size={11} fill="currentColor" /> PROJECT FILM
                   </span>

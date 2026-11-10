@@ -10,6 +10,8 @@ GSAP, SplitText, DrawSVG, and ScrollTrigger animate individual headline characte
 
 Run `npm install` and `npm run dev` to preview locally. Run `npm run build` and `npm start` for production. For a custom domain, set `NEXT_PUBLIC_SITE_URL` to your preferred public origin for canonical and social metadata.
 
+Project videos use build-time encryption and in-page playback to discourage simple download-manager capture without a paid video host. The npm dev/build/typecheck commands prepare the assets automatically. This is best-effort protection, not DRM; see [video playback and its limitations](docs/VIDEO_PLAYBACK.md).
+
 For Vercel, the production URL is detected automatically. See [SEO setup and Google Search Console verification](docs/SEO.md) and [.env.example](.env.example) for deployment settings and indexing steps.
 
 The remainder of this README documents the preserved original implementation.

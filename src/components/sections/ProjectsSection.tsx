@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Scale, Headphones, Dna, Bot, Github, Sparkles, FolderGit2, Video, Image as ImageIcon, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { PROJECTS, Project } from '@/data/portfolioData';
 import ProjectModal from '../ui/ProjectModal';
+import EncryptedVideo from '../ui/EncryptedVideo';
 
 const ICON_MAP: Record<string, any> = {
   Scale: Scale,
@@ -20,17 +21,16 @@ const AMBER = '#f59e0b';
 
 /* ── High-Performance Native Media Carousel Component ── */
 function ProjectCardCarousel({ project }: { project: Project }) {
-  const slides: Array<{
-    type: 'nativeVideo' | 'photo';
-    src: string;
-    caption: string;
-  }> = [];
+  const slides: Array<
+    | { type: 'nativeVideo'; videoId: NonNullable<Project['videoId']>; caption: string }
+    | { type: 'photo'; src: string; caption: string }
+  > = [];
 
-  // 1. Native MP4 Video
-  if (project.videoSrc) {
+  // 1. In-page video playback
+  if (project.videoId) {
     slides.push({
       type: 'nativeVideo',
-      src: project.videoSrc,
+      videoId: project.videoId,
       caption: '🎥 Project Video Demonstration',
     });
   }
@@ -128,16 +128,12 @@ function ProjectCardCarousel({ project }: { project: Project }) {
             transition={{ duration: 0.3 }}
             className="w-full h-full flex items-center justify-center"
           >
-            {/* TYPE 1: Native HTML5 MP4 Video */}
+            {/* TYPE 1: In-page video playback */}
             {currentSlide.type === 'nativeVideo' && (
               <div className="relative w-full h-full bg-black flex items-center justify-center">
-                <video
-                  src={currentSlide.src}
-                  controls
-                  controlsList="nodownload"
-                  draggable={false}
-                  onContextMenu={(event) => event.preventDefault()}
-                  playsInline
+                <EncryptedVideo
+                  videoId={currentSlide.videoId}
+                  label={`${project.title} project demonstration`}
                   className="w-full h-full object-contain bg-black"
                   poster={project.image}
                 />
@@ -273,7 +269,7 @@ export default function ProjectsSection() {
           <AnimatePresence>
             {filteredProjects.map((project) => {
               const IconComponent = ICON_MAP[project.iconName] || FolderGit2;
-              const hasMedia = Boolean(project.videoSrc || project.image);
+              const hasMedia = Boolean(project.videoId || project.image);
 
               return (
                 <motion.div

@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/prepare-videos.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/prepare-videos.mjs",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "pretypecheck": "node scripts/prepare-videos.mjs",
+    "typecheck": "tsc --noEmit",
+    "check:videos": "node scripts/video-qa.mjs"
   },
   "engines": {
     "node": ">=20.9.0"

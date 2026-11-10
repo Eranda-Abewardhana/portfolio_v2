@@ -27,7 +27,7 @@ export interface Project {
     width: number;
     height: number;
   }[];
-  videoSrc?: string;
+  videoId?: "youfira" | "yukti";
   galleryImages?: string[];
   linkedInEmbedUrl?: string;
 }
@@ -190,7 +190,7 @@ export const PROJECTS: Project[] = [
     gradient: "from-amber-500 via-orange-600 to-yellow-600",
     iconName: "Bot",
     image: "/images/1699017629827.jpg", // Robotic arm vehicle photo!
-    videoSrc: "/videos/1698638341487.mp4", // Native MP4 video!
+    videoId: "youfira",
     galleryImages: [
       "/images/1699017629827.jpg",
       "/images/youfira_exmo2023.png",
@@ -215,7 +215,7 @@ export const PROJECTS: Project[] = [
     featured: true,
     gradient: "from-cyan-500 via-blue-600 to-indigo-600",
     iconName: "Scale",
-    videoSrc: "/videos/1750325263163.mp4", // Native MP4 video!
+    videoId: "yukti",
     linkedInEmbedUrl: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7341395341058969600"
   },
   {
