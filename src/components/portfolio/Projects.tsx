@@ -105,10 +105,7 @@ export function ProjectDialog({
       href: project.backendGithub,
     },
     project.github && {
-      label:
-        project.id === "genomic-pathogenicity"
-          ? "GitHub profile"
-          : "Project source",
+      label: "Project source",
       href: project.github,
     },
   ].filter((item): item is { label: string; href: string } => Boolean(item));

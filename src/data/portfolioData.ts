@@ -236,7 +236,7 @@ export const PROJECTS: Project[] = [
       "Evaluated using ROC-AUC, AUPRC, MCC, and Balanced Accuracy on gene-balanced ClinVar datasets."
     ],
     tags: ["Research", "Deep Learning", "PyTorch", "Multi-Scale CNNs", "Transformer Encoders", "Captum XAI"],
-    github: "https://github.com/Eranda-Abewardhana",
+    github: "https://github.com/Eranda-Abewardhana/A-Deep-Learning-Framework-for-Enhanced-Genomic-Sequence-Analysis-and-Variant-Prediction-",
     featured: true,
     gradient: "from-emerald-400 via-teal-500 to-cyan-600",
     iconName: "Dna"

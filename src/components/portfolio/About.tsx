@@ -5,6 +5,7 @@ import {
   ACHIEVEMENTS,
   PERSONAL_INFO,
   PROFILE_NOTES,
+  YATHRA_EVENT,
 } from "@/data/portfolioProfile";
 import ScrollZoom from "./ScrollZoom";
 
@@ -90,21 +91,64 @@ export default function About() {
           <details className="p-award-detail">
             <summary>
               <span>
-                <span className="p-micro">AIESEC UOM / 2024–25</span>
+                <span className="p-micro">CS EMINENCE &apos;24 / AIESEC</span>
                 <strong>Recognised for going beyond.</strong>
               </span>
               <span className="p-detail-plus">+</span>
             </summary>
             <div className="p-award-expanded">
-              <p>{ACHIEVEMENTS[0].title}</p>
+              <p className="p-award-title">{ACHIEVEMENTS[0].title}</p>
               <p>{ACHIEVEMENTS[0].organization}</p>
               <Image
-                src="/images/optimized/award.webp"
-                alt="Eranda’s Best Performing LB Member award and certificate at CS Eminence 2024"
-                width={600}
-                height={600}
-                sizes="(max-width: 760px) 85vw, 30vw"
+                src={ACHIEVEMENTS[0].images![0]}
+                alt="Eranda holding his Best Performing LB Member trophy and certificate at CS Eminence ’24"
+                width={723}
+                height={905}
+                sizes="(max-width: 400px) 85vw, 340px"
               />
+              <blockquote className="p-award-story">
+                <p className="p-award-gratitude">Grateful. Honoured. Proud.</p>
+                {ACHIEVEMENTS[0].quote?.split("\n\n").map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </blockquote>
+            </div>
+          </details>
+          <details className="p-award-detail p-yathra-detail">
+            <summary>
+              <span>
+                <span className="p-micro">YATHRA / {YATHRA_EVENT.year}</span>
+                <strong>{YATHRA_EVENT.role}</strong>
+              </span>
+              <span className="p-detail-plus" aria-hidden="true">+</span>
+            </summary>
+            <div className="p-award-expanded p-yathra-expanded">
+              <h4>{YATHRA_EVENT.title}</h4>
+              <p>{YATHRA_EVENT.organization}</p>
+              <p className="p-yathra-venue">{YATHRA_EVENT.venue}</p>
+              <p>{YATHRA_EVENT.description}</p>
+              <p>{YATHRA_EVENT.experience}</p>
+              <div className="p-yathra-gallery">
+                {YATHRA_EVENT.photos.map((photo) => (
+                  <figure key={photo.src}>
+                    <a
+                      href={photo.src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`View full-size photo: ${photo.caption} (opens in a new tab)`}
+                    >
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        width={photo.width}
+                        height={photo.height}
+                        sizes="(max-width: 480px) 85vw, (max-width: 760px) 40vw, 23vw"
+                      />
+                    </a>
+                    <figcaption>{photo.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
             </div>
           </details>
           <div className="p-recognition-note">

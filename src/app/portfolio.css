@@ -1196,11 +1196,77 @@ html {
   color: var(--muted);
   margin-bottom: 10px;
 }
+.portfolio .p-award-expanded .p-award-title {
+  color: var(--ivory);
+  font-size: 15px;
+  line-height: 1.5;
+}
 .portfolio .p-award-expanded img {
+  display: block;
   width: 100%;
   height: auto;
   max-width: 340px;
   margin-top: 15px;
+}
+.portfolio .p-award-story {
+  border-left: 2px solid var(--accent-text);
+  margin-top: 24px;
+  padding-left: 18px;
+}
+.portfolio .p-award-story p {
+  line-height: 1.8;
+}
+.portfolio .p-award-story .p-award-gratitude {
+  color: var(--accent-text);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+.portfolio .p-award-story p:last-child {
+  margin-bottom: 0;
+}
+.portfolio .p-yathra-detail {
+  border-top: 1px solid var(--rule);
+  margin-top: 20px;
+  padding-top: 18px;
+}
+.portfolio .p-yathra-expanded h4 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.portfolio .p-yathra-expanded p {
+  line-height: 1.8;
+}
+.portfolio .p-yathra-expanded .p-yathra-venue {
+  color: var(--accent-text);
+  margin-bottom: 18px;
+}
+.portfolio .p-yathra-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
+  margin-top: 20px;
+}
+.portfolio .p-yathra-gallery a {
+  display: block;
+}
+.portfolio .p-yathra-gallery img {
+  max-width: none;
+  margin-top: 0;
+}
+.portfolio .p-yathra-gallery figcaption {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+@media (max-width: 480px) {
+  .portfolio .p-yathra-gallery {
+    grid-template-columns: 1fr;
+  }
 }
 .portfolio .p-recognition-note {
   border-top: 1px solid var(--rule);

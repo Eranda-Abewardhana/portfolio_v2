@@ -94,12 +94,43 @@ export const ACHIEVEMENTS = originalAchievements.map((achievement, index) =>
   index === 0
     ? {
         ...achievement,
-        title: "Best Performing Local Board Member – iGT Department",
-        organization: "AIESEC in University of Moratuwa",
-        year: "2024/25",
+        // Owner-supplied CS Eminence '24 photo and award details.
+        images: [
+          "/images/optimized/aiesec-cs-eminence-2024.webp",
+          ...(achievement.images ?? []),
+        ],
       }
     : achievement,
 );
+
+// Owner-supplied photos and organising committee participation for Yathra 2025.
+export const YATHRA_EVENT = {
+  title: "Yathra 2025",
+  year: "2025",
+  role: "Organising Committee Member",
+  organization: "Classical Music Society, University of Moratuwa",
+  venue: "Nelum Pokuna Theatre, Colombo",
+  description:
+    "I was part of the organising committee for Yathra 2025, organised by the Classical Music Society of the University of Moratuwa at Nelum Pokuna Theatre.",
+  experience:
+    "Yathra brings together orchestral music, singing, dance, and cinematic visual storytelling to create a complete artistic experience. Being part of the team behind the event was an opportunity to contribute beyond engineering, through music, collaboration, and community.",
+  photos: [
+    {
+      src: "/images/optimized/yathra-2025-committee.webp",
+      width: 639,
+      height: 855,
+      alt: "Eranda wearing his Yathra event pass inside Nelum Pokuna Theatre",
+      caption: "Behind the scenes · Organising committee",
+    },
+    {
+      src: "/images/optimized/yathra-2025-stage.webp",
+      width: 499,
+      height: 685,
+      alt: "Yathra event team gathered on stage at Nelum Pokuna Theatre beneath red stage lighting",
+      caption: "The team · Nelum Pokuna Theatre",
+    },
+  ],
+};
 
 export const SKILL_CATEGORIES = [
   {
