@@ -714,6 +714,22 @@ html {
   transform: scale(1.035);
   filter: saturate(1.08) brightness(1);
 }
+.portfolio .p-project-sentiview .p-project-cover {
+  background: #f8f9fa;
+  color: #18243b;
+}
+.portfolio .p-project-sentiview .p-project-cover img {
+  object-fit: contain;
+  filter: none;
+  transform: none;
+}
+.portfolio .p-project-sentiview .p-project-cover-shade {
+  background: none;
+}
+.portfolio .p-project-sentiview .p-project-index {
+  background: #fffffff0;
+  padding: 4px 7px;
+}
 .portfolio .p-project-1 .p-project-cover:hover img {
   transform: perspective(1200px) rotateY(-4deg) scale(0.99);
 }
@@ -1025,6 +1041,34 @@ html {
 .portfolio .p-dialog-gallery img {
   width: 100%;
   height: auto;
+}
+.portfolio .p-dialog-screenshots {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.portfolio .p-dialog-screenshots figure:first-child {
+  grid-column: 1 / -1;
+}
+.portfolio .p-dialog-screenshots a {
+  display: block;
+}
+.portfolio .p-dialog-screenshots img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+}
+.portfolio .p-dialog-screenshots figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+@media (max-width: 640px) {
+  .portfolio .p-dialog-screenshots {
+    grid-template-columns: 1fr;
+  }
 }
 .portfolio .p-dialog-links {
   display: flex;

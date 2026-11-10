@@ -40,7 +40,9 @@ function ProjectCardCarousel({ project }: { project: Project }) {
     slides.push({
       type: 'photo',
       src: project.image,
-      caption: '📸 Autonomous Robotic Vehicle & Hardware',
+      caption: project.id === 'youfira-robotics'
+        ? '📸 Autonomous Robotic Vehicle & Hardware'
+        : `📸 ${project.title}`,
     });
   }
 

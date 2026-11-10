@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Github, Play, X } from "lucide-react";
+import { ArrowUpRight, Figma, Github, Play, X } from "lucide-react";
 import { PROJECTS, PERSONAL_INFO, type Project } from "@/data/portfolioProfile";
 import SectionHeading from "./SectionHeading";
 import ScrollZoom from "./ScrollZoom";
@@ -140,6 +140,33 @@ export function ProjectDialog({
           {presentation?.name || "Genomic AI"}
         </h2>
         <p className="p-dialog-subtitle">{project.subtitle}</p>
+        {project.screenshots && (
+          <section className="p-dialog-section" aria-label="Interface designs">
+            <h3>INTERFACE DESIGNS</h3>
+            <div className="p-dialog-screenshots">
+              {project.screenshots.map((screenshot) => (
+                <figure key={screenshot.src}>
+                  <a
+                    href={screenshot.src}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`View ${screenshot.caption.toLowerCase()} at full size (opens in a new tab)`}
+                  >
+                    <Image
+                      src={screenshot.src}
+                      alt={screenshot.alt}
+                      width={screenshot.width}
+                      height={screenshot.height}
+                      quality={90}
+                      sizes="(max-width: 640px) 90vw, 800px"
+                    />
+                  </a>
+                  <figcaption>{screenshot.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
         {project.id === "doccraft" && (
           <div className="p-dialog-architecture">
             <DocCraftVisual />
@@ -205,8 +232,20 @@ export function ProjectDialog({
             <span key={tag}>{tag}</span>
           ))}
         </div>
-        {repositories.length > 0 && (
+        {(repositories.length > 0 || project.figmaUrl) && (
           <div className="p-dialog-links">
+            {project.figmaUrl && (
+              <a
+                className="p-button p-button-outline"
+                href={project.figmaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Figma size={16} />
+                Figma designs
+                <ArrowUpRight size={16} />
+              </a>
+            )}
             {repositories.map((repo) => (
               <a
                 className="p-button p-button-outline"
@@ -262,6 +301,29 @@ export default function Projects() {
       <div className="p-project-grid">
         {featured.map((project, index) => {
           const details = projectPresentation[project.id];
+          const cover = details.cover ?? project.image;
+          const visual = cover ? (
+            <Image
+              src={cover}
+              alt={
+                project.imageAlt ??
+                (project.id === "yukti-ai"
+                  ? "Yukti legal AI application, captured from the original project demonstration"
+                  : "The YouFIRA robotic vehicle with its custom robotic arm")
+              }
+              fill
+              sizes={
+                index === 0
+                  ? "(max-width: 760px) 100vw, 90vw"
+                  : "(max-width: 760px) 100vw, 45vw"
+              }
+              quality={88}
+            />
+          ) : project.id === "doccraft" ? (
+            <DocCraftVisual />
+          ) : (
+            <AudioVisual />
+          );
           return (
             <article
               className={`p-project p-project-${index + 1} p-project-${project.id}`}
@@ -272,29 +334,13 @@ export default function Projects() {
                 onClick={() => setSelected(project)}
                 aria-label={`Explore ${details.name} project`}
               >
-                <ScrollZoom amount={index === 0 ? 0.1 : 0.16}>
-                  {details.cover ? (
-                    <Image
-                      src={details.cover}
-                      alt={
-                        project.id === "yukti-ai"
-                          ? "Yukti legal AI application, captured from the original project demonstration"
-                          : "The YouFIRA robotic vehicle with its custom robotic arm"
-                      }
-                      fill
-                      sizes={
-                        index === 0
-                          ? "(max-width: 760px) 100vw, 90vw"
-                          : "(max-width: 760px) 100vw, 45vw"
-                      }
-                      quality={88}
-                    />
-                  ) : project.id === "doccraft" ? (
-                    <DocCraftVisual />
-                  ) : (
-                    <AudioVisual />
-                  )}
-                </ScrollZoom>
+                {project.id === "sentiview" ? (
+                  visual
+                ) : (
+                  <ScrollZoom amount={index === 0 ? 0.1 : 0.16}>
+                    {visual}
+                  </ScrollZoom>
+                )}
                 <div className="p-project-cover-shade" />
                 <span className="p-project-index p-micro">
                   0{index + 1} / {project.year}

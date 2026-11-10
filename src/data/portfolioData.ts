@@ -14,10 +14,19 @@ export interface Project {
   frontendGithub?: string;
   backendGithub?: string;
   github?: string;
+  figmaUrl?: string;
   featured: boolean;
   gradient: string;
   iconName: string;
   image?: string;
+  imageAlt?: string;
+  screenshots?: {
+    src: string;
+    alt: string;
+    caption: string;
+    width: number;
+    height: number;
+  }[];
   videoSrc?: string;
   galleryImages?: string[];
   linkedInEmbedUrl?: string;
@@ -233,6 +242,46 @@ export const PROJECTS: Project[] = [
     tags: ["NLP", "Sentiment Analysis", "FastAPI", "AWS Lambda", "Angular", "MongoDB", "Docker"],
     frontendGithub: "https://github.com/HRS0986/iCMS-Frontend",
     backendGithub: "https://github.com/Eranda-Abewardhana/ICSMS-Call-Analyzer-Backend",
+    figmaUrl: "https://www.figma.com/design/7B6SoXDye4cLMTxMNw2vhO/iCSMS-Dashboard?node-id=9-11926",
+    image: "/images/optimized/sentiview-call-analytics.webp",
+    imageAlt: "SentiView iCMS call analytics dashboard with sentiment charts, call metrics, and a word cloud",
+    screenshots: [
+      {
+        src: "/images/optimized/sentiview-call-analytics.webp",
+        alt: "SentiView call analytics dashboard showing sentiment over time, daily sentiment, call summary, and topic analysis",
+        caption: "Call analytics dashboard",
+        width: 1682,
+        height: 984,
+      },
+      {
+        src: "/images/optimized/sentiview-call-filtering.webp",
+        alt: "SentiView call filtering screen with date, topic, keyword, sentiment, and call duration filters",
+        caption: "Call filtering and search",
+        width: 1682,
+        height: 984,
+      },
+      {
+        src: "/images/optimized/sentiview-call-upload.webp",
+        alt: "SentiView call recording upload screen with file selection, call name, and call date fields",
+        caption: "Call recording uploads",
+        width: 1682,
+        height: 984,
+      },
+      {
+        src: "/images/optimized/sentiview-call-operators.webp",
+        alt: "SentiView call operator management screen with operator rows and add, view, and delete controls",
+        caption: "Call operator management",
+        width: 1682,
+        height: 984,
+      },
+      {
+        src: "/images/optimized/sentiview-login.webp",
+        alt: "SentiView login screen with an analytics illustration and email and password fields",
+        caption: "Login and account access",
+        width: 3364,
+        height: 1968,
+      },
+    ],
     featured: true,
     gradient: "from-purple-500 via-violet-600 to-indigo-700",
     iconName: "Headphones"
