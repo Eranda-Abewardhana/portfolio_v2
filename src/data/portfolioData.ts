@@ -6,6 +6,10 @@ export interface Project {
   category: 'AI/ML' | 'Full-Stack' | 'Robotics' | 'NLP';
   description: string;
   highlights: string[];
+  specification?: {
+    context: string;
+    requirements: string[];
+  };
   tags: string[];
   frontendGithub?: string;
   backendGithub?: string;
@@ -207,16 +211,25 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "sentiview",
-    title: "Call Center Communication Analyzer (SentiView)",
-    subtitle: "Serverless Audio Transcription & Sentiment Analysis Platform",
+    title: "SentiView / iCMS – Call Center Communication Analyzer",
+    subtitle: "Call Analytics & Sentiment Analysis · Mentored by CodeGen",
     year: "2024",
     category: "NLP",
-    description: "Built an NLP-based sentiment analysis platform for call recordings, featuring an automated audio ingestion and transcription pipeline with real-time sentiment visualizers.",
+    description: "Developed the call analytics component of iCMS (SentiView), a customer satisfaction monitoring project mentored by CodeGen. Built an automated audio ingestion and transcription pipeline with sentiment visualisations for call recordings.",
     highlights: [
       "Engineered audio processing pipeline using Angular frontend and FastAPI microservices.",
       "Leveraged AWS S3, Lambda, and EC2 for serverless audio processing and API hosting.",
       "Dockerized full stack with GitHub Actions CI/CD; metadata stored in MongoDB."
     ],
+    specification: {
+      context: "The project specification places the Call Center Communication Analyzer within a wider Customer Satisfaction Monitoring System (iCSMS), alongside email analysis, social media analysis, and a shared dashboard. The specified scope includes:",
+      requirements: [
+        "Multilingual transcription with language identification, accent support, and compatibility with common audio formats.",
+        "Sensitive-data detection and masking, with authentication and controlled access to communication data.",
+        "Searchable call metrics and sentiment dashboards, transcript-linked playback, and configurable notifications.",
+        "A multi-tenant, API-driven design with modular language-model integration and an Angular/PrimeNG, FastAPI, and MongoDB architecture."
+      ],
+    },
     tags: ["NLP", "Sentiment Analysis", "FastAPI", "AWS Lambda", "Angular", "MongoDB", "Docker"],
     frontendGithub: "https://github.com/HRS0986/iCMS-Frontend",
     backendGithub: "https://github.com/Eranda-Abewardhana/ICSMS-Call-Analyzer-Backend",

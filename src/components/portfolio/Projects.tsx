@@ -31,8 +31,8 @@ const projectPresentation: Record<
   },
   sentiview: {
     name: "SentiView",
-    label: "NATURAL LANGUAGE PROCESSING",
-    line: "Turning conversations into understanding.",
+    label: "NLP / iCMS / MENTORED BY CODEGEN",
+    line: "Call analytics for a connected customer satisfaction platform.",
   },
 };
 
@@ -171,6 +171,17 @@ export function ProjectDialog({
             ))}
           </ul>
         </div>
+        {project.specification && (
+          <div className="p-dialog-section">
+            <h3>PROJECT SCOPE</h3>
+            <p>{project.specification.context}</p>
+            <ul>
+              {project.specification.requirements.map((requirement) => (
+                <li key={requirement}>{requirement}</li>
+              ))}
+            </ul>
+          </div>
+        )}
         {project.galleryImages && (
           <div className="p-dialog-gallery">
             {project.galleryImages.map((src, index) => (
