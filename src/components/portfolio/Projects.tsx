@@ -242,7 +242,7 @@ export function ProjectDialog({
                 rel="noopener noreferrer"
               >
                 <Figma size={16} />
-                Figma designs
+                Figma prototype
                 <ArrowUpRight size={16} />
               </a>
             )}

@@ -242,7 +242,7 @@ export const PROJECTS: Project[] = [
     tags: ["NLP", "Sentiment Analysis", "FastAPI", "AWS Lambda", "Angular", "MongoDB", "Docker"],
     frontendGithub: "https://github.com/HRS0986/iCMS-Frontend",
     backendGithub: "https://github.com/Eranda-Abewardhana/ICSMS-Call-Analyzer-Backend",
-    figmaUrl: "https://www.figma.com/design/7B6SoXDye4cLMTxMNw2vhO/iCSMS-Dashboard?node-id=9-11926",
+    figmaUrl: "https://www.figma.com/proto/7B6SoXDye4cLMTxMNw2vhO/iCSMS-Dashboard?node-id=80-14049&starting-point-node-id=80%3A14049",
     image: "/images/optimized/sentiview-call-analytics.webp",
     imageAlt: "SentiView iCMS call analytics dashboard with sentiment charts, call metrics, and a word cloud",
     screenshots: [
