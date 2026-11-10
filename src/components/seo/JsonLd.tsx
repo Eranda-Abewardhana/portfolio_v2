@@ -15,7 +15,7 @@ export default function JsonLd() {
     ],
     url: `${baseUrl}/`,
     mainEntityOfPage: { "@id": `${baseUrl}/#profilepage` },
-    image: `${baseUrl}/images/optimized/eranda-hero.webp`,
+    image: `${baseUrl}${PERSONAL_INFO.images.heroPortrait}`,
     jobTitle: "AI & Software Engineer",
     description: PERSONAL_INFO.summary,
     email: PERSONAL_INFO.email,

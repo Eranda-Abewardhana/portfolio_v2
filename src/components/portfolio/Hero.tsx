@@ -131,8 +131,8 @@ export default function Hero() {
             className="p-portrait"
           >
             <Image
-              src="/images/optimized/eranda-hero.webp"
-              alt="Eranda Sathsara Abewardhana in a dark suit, photographed outdoors"
+              src={PERSONAL_INFO.images.heroPortrait}
+              alt="Eranda Sathsara Abewardhana in a beige suit jacket, photographed outdoors"
               fill
               priority
               sizes="(max-width: 640px) 100vw, (max-width: 1000px) 55vw, 46vw"

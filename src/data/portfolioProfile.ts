@@ -13,6 +13,10 @@ export type { Project } from "./portfolioData";
 // Source: Eranda_Abewardhana_AI_CV.pdf, supplied by the owner on 2026-11-05.
 export const PERSONAL_INFO = {
   ...originalPersonalInfo,
+  images: {
+    ...originalPersonalInfo.images,
+    heroPortrait: "/images/optimized/eranda-professional.webp",
+  },
   cvUrl: "/cv/Eranda_Abewardhana_AI_CV.pdf",
   phone: "+94 764 874 820",
   whatsapp: "https://wa.me/94764874820",
