@@ -1603,6 +1603,14 @@ html {
 .portfolio .p-experience-details li::marker {
   color: var(--muted);
 }
+.portfolio .p-experience-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 28px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
 
 /* Research, deliberately diagrammatic rather than a fabricated screenshot. */
 .portfolio .p-research-band {

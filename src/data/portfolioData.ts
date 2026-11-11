@@ -45,6 +45,12 @@ export interface Experience {
   period: string;
   description: string[];
   tags: string[];
+  image?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
 }
 
 export interface Education {
@@ -147,6 +153,12 @@ export const EXPERIENCES: Experience[] = [
     role: "Machine Learning Engineering Intern",
     company: "Orysys Pvt Ltd",
     location: "Colombo, Sri Lanka",
+    image: {
+      src: "/images/machine-learning-internship-team.jpg",
+      alt: "Group photo from the Machine Learning Engineering internship at Orysys",
+      width: 800,
+      height: 600,
+    },
     period: "Feb 2025 – Aug 2025",
     description: [
       "Architected scalable backend microservices and REST APIs in FastAPI to serve AI model inference, document indexing, and workflow orchestration at production scale.",
@@ -160,6 +172,12 @@ export const EXPERIENCES: Experience[] = [
     role: "Mobile Application Developer",
     company: "eVision Microsystems Pvt Ltd",
     location: "Panadura, Sri Lanka",
+    image: {
+      src: "/images/evision-mobile-developer-team.jpg",
+      alt: "Group photo with the eVision Microsystems team during the Mobile Application Developer role",
+      width: 1080,
+      height: 810,
+    },
     period: "Jan 2021 – Mar 2022",
     description: [
       "Developed and shipped 3+ cross-platform mobile applications using Flutter and Native Android (Java) for commercial clients, consistently meeting delivery deadlines.",

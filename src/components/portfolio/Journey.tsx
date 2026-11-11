@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { ArrowUpRight, Plus } from "lucide-react";
 import { EXPERIENCES, PROJECTS } from "@/data/portfolioProfile";
 import SectionHeading from "./SectionHeading";
@@ -114,6 +115,16 @@ export default function Journey() {
                     <span key={tag}>{tag}</span>
                   ))}
                 </div>
+                {experience.image && (
+                  <Image
+                    className="p-experience-photo"
+                    src={experience.image.src}
+                    alt={experience.image.alt}
+                    width={experience.image.width}
+                    height={experience.image.height}
+                    sizes="(max-width: 760px) 90vw, (max-width: 1100px) 65vw, 720px"
+                  />
+                )}
               </div>
             </details>
           ))}
