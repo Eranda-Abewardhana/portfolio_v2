@@ -104,16 +104,18 @@ export default function Journey() {
                   strokeWidth={1}
                 />
               </summary>
-              <div className="p-experience-details">
-                <ul>
-                  {experience.description.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <div className="p-tags">
-                  {experience.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
+              <div className="p-experience-body">
+                <div className="p-experience-details">
+                  <ul>
+                    {experience.description.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <div className="p-tags">
+                    {experience.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
                 </div>
                 {experience.image && (
                   <Image
@@ -122,7 +124,7 @@ export default function Journey() {
                     alt={experience.image.alt}
                     width={experience.image.width}
                     height={experience.image.height}
-                    sizes="(max-width: 760px) 90vw, (max-width: 1100px) 65vw, 720px"
+                    sizes="(max-width: 800px) 90vw, (max-width: 1450px) 22vw, 320px"
                   />
                 )}
               </div>
